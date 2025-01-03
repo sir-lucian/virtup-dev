@@ -30,13 +30,13 @@
                         </div>
                         <div class="overlay-menu-btn"></div>
                     </a>
-                    <a href="javascript:void(0)" class="d-block menu-btn">
+                    <a href="#about" class="d-block menu-btn">
                         <div class="d-flex flex-column h-100 justify-content-center">
                             <div class="d-block mx-3 menu-text">About</div>
                         </div>
                         <div class="overlay-menu-btn"></div>
                     </a>
-                    <a href="javascript:void(0)" class="d-block menu-btn">
+                    <a href="#contact" class="d-block menu-btn">
                         <div class="d-flex flex-column h-100 justify-content-center">
                             <div class="d-block mx-3 menu-text">Contact</div>
                         </div>
@@ -56,9 +56,9 @@
         <small class="scroll-down-text">Scroll Down</small>
     </div>
 
-    <div class="min-vh-100 d-flex flex-column justify-content-center">
-        <div class="container-fluid">
-            <div class="container-md my-5 text-white">
+    <div class="min-vh-100 d-flex flex-column justify-content-center" name="content">
+        <div class="container-fluid" id="about">
+            <div class="container-md my-md-5 my-2 text-white">
                 <div class="row">
                     <div class="col-md-4 my-auto">
                         <div class="d-flex flex-column justify-content-center">
@@ -76,8 +76,8 @@
             </div>
         </div>
     
-        <div class="container-fluid">
-            <div class="container-md my-5 text-white">
+        <div class="container-fluid" id="contact">
+            <div class="container-md my-md-5 my-2 text-white">
                 <div class="row">
                     <div class="col-md-8 my-auto">
                         <div class="d-flex flex-column justify-content-center">
@@ -85,7 +85,7 @@
                             <p class="lead">VirtUp Entertainment Co., Ltd.</p>
                             <p>
                                 135/11 Amornphan 205 Tower Building 2
-                                7th Floor, Soi. Natong, Ratchadapisek Road,
+                                7th Floor, Soi Natong, Ratchadapisek Road,
                                 Ratchadaphisek Subdistrict, Din Daeng District,
                                 Bangkok 10400
                             </p>
@@ -105,9 +105,16 @@
                 </div>
             </div>
         </div>
+
+        <p class="text-white text-center mt-md-5 mt-2">&copy;&nbsp;All Rights reserved by VirtUp Entertainment Co., Ltd. <small class="text-secondary">2024-<span id="presentYear">Present</span></small></p>
     </div>
     
-
 </body>
 <script src="src/js/bootstrap.min.js"></script>
+<script>
+    const presentYear = document.getElementById('presentYear');
+    const date = new Date();
+    const year = date.getFullYear();
+    presentYear.innerText = year;
+</script>
 </html>
