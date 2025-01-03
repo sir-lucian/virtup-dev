@@ -1,0 +1,72 @@
+body {
+    background-color: rgb(11,11,11);
+}
+
+div#banner{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(11, 11, 11, 1)), url("../images/test.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.scroll-down-text {
+    color: transparent;
+    transition: color 0.25s ease-in-out;
+}
+
+div#banner:hover .scroll-down-text{
+    color: white;
+}
+
+div#navbar {
+    background: rgba(11,11,11,0.8);
+}
+
+.logo {
+    height: 5rem;
+    width: auto;
+    filter: invert(1);
+}
+
+.hamburger_menu {
+    height: 2.5rem;
+    width: auto;
+}
+
+.header {
+    border-bottom: 5px solid rgb(255, 210, 64);
+    width: fit-content;
+}
+
+.menu-btn {
+    color: white;
+    font-weight: 600;
+    position: relative;
+    padding: 1rem 0;
+    text-decoration: none;
+}
+
+.menu-text {
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+.overlay-menu-btn {
+    position: absolute;
+    pointer-events: none;
+    height: 100%;
+    width: 0%;
+    top: 0;
+    border-bottom: 5px solid rgb(255, 210, 64);
+    transition: width 0.25s ease-in-out;
+}
+
+.menu-btn:hover .overlay-menu-btn {
+    width: 100%;
+}
+
+.accented {
+    color: rgb(255, 210, 64);
+}
