@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="../src/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../src/css/icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" type="text/css" href="../src/css/extended.css" />
+</head>
+<body>
+    <div class="position-fixed w-100" style="z-index:5;">
+        <div class="px-md-5 px-2 d-flex flex-row justify-content-between" id="navbar">
+            <div class="d-block">
+                <div class="d-flex flex-column h-100 justify-content-center">
+                    <img src="https://lucian.solutions/images/4.png" alt="logo" class="logo" loading="lazy" />
+                </div>
+            </div>
+            <div class="d-md-block d-none">
+                <div class="d-flex flex-row h-100">
+                    <a href=".." class="d-block menu-btn" rel="preload">
+                        <div class="d-flex flex-column h-100 justify-content-center">
+                            <div class="d-block mx-3 menu-text">Home</div>
+                        </div>
+                        <div class="overlay-menu-btn"></div>
+                    </a>
+                    <a href="javascript:void(0)" class="d-block menu-btn" role="button" onclick="goToTop()">
+                        <div class="d-flex flex-column h-100 justify-content-center">
+                            <div class="d-block mx-3 menu-text">Our Influencers</div>
+                        </div>
+                        <div class="overlay-menu-btn"></div>
+                    </a>
+                    <a href="..#about" class="d-block menu-btn">
+                        <div class="d-flex flex-column h-100 justify-content-center">
+                            <div class="d-block mx-3 menu-text">About</div>
+                        </div>
+                        <div class="overlay-menu-btn"></div>
+                    </a>
+                    <a href="..#contact" class="d-block menu-btn">
+                        <div class="d-flex flex-column h-100 justify-content-center">
+                            <div class="d-block mx-3 menu-text">Contact</div>
+                        </div>
+                        <div class="overlay-menu-btn"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="d-md-none d-block">
+                <div class="d-flex flex-column h-100 justify-content-center">
+                    <img src="../src/images/hamburger_menu.png" alt="menu" class="hamburger_menu" id="hamburger_menu" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="banner2" class="d-flex flex-column justify-content-end pb-5 text-center banner">
+        <i class="display-6 bi bi-chevron-down scroll-down-text"></i>
+        <small class="scroll-down-text">Scroll Down</small>
+    </div>
+
+    <div class="min-vh-100 d-flex flex-column justify-content-center" name="content">
+        <div class="container-fluid content-scroll" id="about">
+            <div class="container-md my-md-5 my-2 text-white">
+                <div class="row">
+                    <div class="col-md-12 my-auto">
+                        <div class="d-flex flex-column justify-content-center">
+                            <h1 class="display-1 text-center pb-3 mb-3 accented" id="loading"><i class="bi bi-star-fill"></i></h1>
+                            <h1 class="display-4 text-center pb-3 mb-3">Coming Soon</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-white text-center mt-md-5 mt-2">&copy;&nbsp;All Rights reserved by VirtUp Entertainment Co., Ltd. <small class="text-secondary">2024-<span id="presentYear">Present</span></small></p>
+    </div>
+    
+</body>
+<script type="text/javascript" src="../src/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../src/js/extended.js"></script>
+<script>
+    const presentYear = document.getElementById('presentYear');
+    const date = new Date();
+    const year = date.getFullYear();
+    presentYear.innerText = year;
+</script>
+</html>
