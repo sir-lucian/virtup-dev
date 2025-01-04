@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="position-fixed w-100" style="z-index:5;">
-        <div class="px-md-5 px-2 d-flex flex-row justify-content-between" id="navbar">
+        <div class="px-md-5 px-4 d-flex flex-row justify-content-between navbar-custom">
             <div class="d-block">
                 <div class="d-flex flex-column h-100 justify-content-center">
                     <img src="https://lucian.solutions/images/4.png" alt="logo" class="logo" loading="lazy" />
@@ -24,9 +24,9 @@
                         </div>
                         <div class="overlay-menu-btn"></div>
                     </a>
-                    <a href="members" class="d-block menu-btn">
+                    <a href="virtual-influencers" class="d-block menu-btn">
                         <div class="d-flex flex-column h-100 justify-content-center">
-                            <div class="d-block mx-3 menu-text">Our Influencers</div>
+                            <div class="d-block mx-3 menu-text">Our Virtual Influencers</div>
                         </div>
                         <div class="overlay-menu-btn"></div>
                     </a>
@@ -44,13 +44,32 @@
                     </a>
                 </div>
             </div>
-            <div class="d-md-none d-block">
+            <div class="d-md-none d-block" role="button" onclick="toggleMobileNav()">
                 <div class="d-flex flex-column h-100 justify-content-center">
                     <img src="src/images/hamburger_menu.png" alt="menu" class="hamburger_menu" id="hamburger_menu" loading="lazy" />
                 </div>
             </div>
         </div>
+        <div class="px-md-5 px-4 py-2 d-md-none hideMenu" id="mobileNav">
+            <div class="d-flex flex-row justify-content-end">
+                <div class="navbar-custom rounded-3">
+                    <a href="javascript:void(0)" role="button" class="text-white text-decoration-none" role="button" onclick="goToTop();toggleMobileNav();">
+                        <div class="d-block mobile-nav-item text-end">Home</div>
+                    </a>
+                    <a href="virtual-influencers" class="text-white text-decoration-none" onclick="toggleMobileNav();">
+                        <div class="d-block mobile-nav-item text-end">Our Virtual Influencers</div>
+                    </a>
+                    <a href="#about" class="text-white text-decoration-none" onclick="toggleMobileNav();">
+                        <div class="d-block mobile-nav-item text-end">About</div>
+                    </a>
+                    <a href="#contact" class="text-white text-decoration-none" onclick="toggleMobileNav();">
+                        <div class="d-block mobile-nav-item text-end">Contact</div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+
     <div id="banner" class="d-flex flex-column justify-content-end pb-5 text-center banner">
         <i class="display-6 bi bi-chevron-down scroll-down-text"></i>
         <small class="scroll-down-text">Scroll Down</small>
@@ -67,7 +86,7 @@
                     </div>
                     <div class="col-md-8 my-auto">
                         <div class="d-flex flex-column justify-content-center">
-                            <h1 class="display-6 pb-3 mb-3 header">About VirtUp</h1>
+                            <h1 class="display-6 pb-3 mb-3 header">About VirtUP</h1>
                             <p class="lead">OUR COMPANY</p>
                             <p>VirtUP Entertainment Co., Ltd. was established in 2024 with the mission of fostering creativity and bringing imagination to life for everyone. By blending exceptional talents across various fields with the charm and fun of diverse virtual characters, the company delivers captivating works, including Virtual YouTubers, music videos, and much more.</p>
                         </div>
@@ -82,7 +101,7 @@
                     <div class="col-md-8 my-auto">
                         <div class="d-flex flex-column justify-content-center">
                             <h1 class="display-6 pb-3 mb-3 header">Contact Us</h1>
-                            <p class="lead">VirtUp Entertainment Co., Ltd.</p>
+                            <p class="lead">VirtUP Entertainment Co., Ltd.</p>
                             <p>
                                 135/11 Amornphan 205 Tower Building 2
                                 7th Floor, Soi Natong, Ratchadapisek Road,
@@ -106,12 +125,13 @@
             </div>
         </div>
 
-        <p class="text-white text-center mt-md-5 mt-2">&copy;&nbsp;All Rights reserved by VirtUp Entertainment Co., Ltd. <small class="text-secondary">2024-<span id="presentYear">Present</span></small></p>
+        <p class="text-white text-center mt-md-5 mt-2">&copy;&nbsp;All Rights reserved by VirtUP Entertainment Co., Ltd. <small class="text-secondary">2024-<span id="presentYear">Present</span></small></p>
     </div>
     
 </body>
 <script type="text/javascript" src="src/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="src/js/extended.js"></script>
+<script type="text/javascript" src="src/js/mobile_menu.js"></script>
 <script>
     const presentYear = document.getElementById('presentYear');
     const date = new Date();

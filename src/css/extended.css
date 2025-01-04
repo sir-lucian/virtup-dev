@@ -38,8 +38,27 @@ div.banner:hover .scroll-down-text{
     color: white;
 }
 
-div#navbar {
+div.navbar-custom {
     background-color: rgba(11,11,11,0.8);
+}
+
+div.showMenu {
+    opacity: 1;
+    transition: 0.25s ease-in-out;
+    translate: 0 1rem;
+}
+
+div.hideMenu {
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease-in-out;
+}
+
+.mobile-nav-item {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-right: 5px solid var(--accented-color);
 }
 
 #loading {
@@ -50,12 +69,12 @@ div#navbar {
 @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
-  }
+}
   
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+}
 
 .content-scroll {
     scroll-margin-top: 3rem;
