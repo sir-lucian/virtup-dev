@@ -32,13 +32,13 @@
                     </a>
                     <a href="#about" class="d-block menu-btn">
                         <div class="d-flex flex-column h-100 justify-content-center">
-                            <div class="d-block mx-3 menu-text">About</div>
+                            <div class="d-block mx-3 menu-text">About VirtUp</div>
                         </div>
                         <div class="overlay-menu-btn"></div>
                     </a>
                     <a href="#contact" class="d-block menu-btn">
                         <div class="d-flex flex-column h-100 justify-content-center">
-                            <div class="d-block mx-3 menu-text">Contact</div>
+                            <div class="d-block mx-3 menu-text">Contact Us</div>
                         </div>
                         <div class="overlay-menu-btn"></div>
                     </a>
@@ -60,23 +60,23 @@
                         <div class="d-block mobile-nav-item text-end">Our Virtual Influencers</div>
                     </a>
                     <a href="#about" class="text-white text-decoration-none" onclick="toggleMobileNav();">
-                        <div class="d-block mobile-nav-item text-end">About</div>
+                        <div class="d-block mobile-nav-item text-end">About VirtUp</div>
                     </a>
                     <a href="#contact" class="text-white text-decoration-none" onclick="toggleMobileNav();">
-                        <div class="d-block mobile-nav-item text-end">Contact</div>
+                        <div class="d-block mobile-nav-item text-end">Contact Us</div>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="banner" class="d-flex flex-column justify-content-end pb-5 text-center banner">
+    <div id="banner" class="d-flex flex-column justify-content-end pb-5 text-center banner fade-in-onload">
         <i class="display-6 bi bi-chevron-down scroll-down-text"></i>
         <small class="scroll-down-text">Scroll Down</small>
     </div>
 
     <div class="min-vh-100 d-flex flex-column justify-content-center" name="content">
-        <div class="container-fluid content-scroll" id="about">
+        <div class="container-fluid content-scroll fade-in" id="about">
             <div class="container-md my-md-5 my-2 text-white">
                 <div class="row">
                     <div class="col-md-4 my-auto">
@@ -86,22 +86,22 @@
                     </div>
                     <div class="col-md-8 my-auto">
                         <div class="d-flex flex-column justify-content-center">
-                            <h1 class="display-6 pb-3 mb-3 header">About VirtUP</h1>
+                            <h1 class="display-6 pb-3 mb-3 header">About VirtUp</h1>
                             <p class="lead">OUR COMPANY</p>
-                            <p>VirtUP Entertainment Co., Ltd. was established in 2024 with the mission of fostering creativity and bringing imagination to life for everyone. By blending exceptional talents across various fields with the charm and fun of diverse virtual characters, the company delivers captivating works, including Virtual YouTubers, music videos, and much more.</p>
+                            <p>VirtUp Entertainment Co., Ltd. was established in 2024 with the mission of fostering creativity and bringing imagination to life for everyone. By blending exceptional talents across various fields with the charm and fun of diverse virtual characters, the company delivers captivating works, including Virtual YouTubers, music videos, and much more.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     
-        <div class="container-fluid content-scroll" id="contact">
+        <div class="container-fluid content-scroll fade-in" id="contact">
             <div class="container-md my-md-5 my-2 text-white">
                 <div class="row">
                     <div class="col-md-8 my-auto">
                         <div class="d-flex flex-column justify-content-center">
                             <h1 class="display-6 pb-3 mb-3 header">Contact Us</h1>
-                            <p class="lead">VirtUP Entertainment Co., Ltd.</p>
+                            <p class="lead">VirtUp Entertainment Co., Ltd.</p>
                             <p>
                                 135/11 Amornphan 205 Tower Building 2
                                 7th Floor, Soi Natong, Ratchadapisek Road,
@@ -125,11 +125,12 @@
             </div>
         </div>
 
-        <p class="text-white text-center mt-md-5 mt-2">&copy;&nbsp;All Rights reserved by VirtUP Entertainment Co., Ltd. <small class="text-secondary">2024-<span id="presentYear">Present</span></small></p>
+        <p class="text-white text-center mt-md-5 mt-2">&copy;&nbsp;All Rights reserved by VirtUp Entertainment Co., Ltd. <small class="text-secondary">2024-<span id="presentYear">Present</span></small></p>
     </div>
     
 </body>
 <script type="text/javascript" src="src/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="src/js/jquery.min.js"></script>
 <script type="text/javascript" src="src/js/extended.js"></script>
 <script type="text/javascript" src="src/js/mobile_menu.js"></script>
 <script>
@@ -137,5 +138,31 @@
     const date = new Date();
     const year = date.getFullYear();
     presentYear.innerText = year;
+
+    $("#banner").ready(function() {
+        $('.fade-in-onload').each(function() {
+            var top_of_element = $(this).offset().top;
+            var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+            var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+            var top_of_screen = $(window).scrollTop();
+
+            if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element) && !$(this).hasClass('is-visible')) {
+                $(this).addClass('is-visible');
+            }
+        });
+    });
+
+    $(window).scroll(function() {
+        $('.fade-in').each(function() {
+            var top_of_element = $(this).offset().top;
+            var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+            var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+            var top_of_screen = $(window).scrollTop();
+
+            if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element) && !$(this).hasClass('is-visible')) {
+                $(this).addClass('is-visible');
+            }
+        });
+    });
 </script>
 </html>
