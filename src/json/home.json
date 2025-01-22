@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "section": "about",
+            "details": {
+                "logo": {
+                    "alt": "VirtUp Logo",
+                    "path": "https://lucian.solutions/images/4.png"
+                },
+                "title": "About VirtUp",
+                "subtitle": "OUR COMPANY",
+                "description": "VirtUp Entertainment Co., Ltd. was established in 2024 with the mission of fostering creativity and bringing imagination to life for everyone. By blending exceptional talents across various fields with the charm and fun of diverse virtual characters, the company delivers captivating works, including Virtual YouTubers, music videos, and much more."
+            }
+        },
+        {
+            "section": "contact",
+            "details": {
+                "title": "Contact Us",
+                "subtitle": "VirtUp Entertainment Co., Ltd.",
+                "address": "135/11 Amornphan 205 Tower Building 2 7th Floor, Soi Natong, Ratchadapisek Road, Ratchadaphisek Subdistrict, Din Daeng District, Bangkok 10400",
+                "email": "official@virtup.me",
+                "phone": "082-258-4967",
+                "phone_name": "(Mew)",
+                "social": {
+                    "facebook": "https://facebook.com",
+                    "x": "https://x.com",
+                    "youtube": "https://youtube.com"
+                }
+            }
+        }
+    ]
+}
