@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- SEO -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="title" content="VirtUp" />
+    <meta name="application-name" content="VirtUp" />
+    <meta name="og:site_name" content="VirtUp" />
+    <meta name="twitter:title" content="VirtUp" />
+    <meta property="og:title" content="VirtUp" />
+
+    <meta property="og:type" content="website" />
+    
+    <meta name="keywords" content="virtup, vtuber, streamer, entertainment" />
+
+    <meta name="author" content="VirtUp Entertainment Co., Ltd." />
+    <meta name="description" content="VirtUp Entertainment Co., Ltd." />
+    <meta property="og:description" content="VirtUp Entertainment Co., Ltd." />
+    <meta name="twitter:description" content="VirtUp Entertainment Co., Ltd." />
+
+    <meta name="twitter:url" content="https://virtup.me" />
+    <meta name="robots" content="index,follow" />
+
+    <meta name="msapplication-TileColor" content="#32E3A8" />
+    <meta name="theme-color" content="#32E3A8">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#32E3A8" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#32E3A8" />
+
+    <title>VirtUp</title>
     <link rel="stylesheet" type="text/css" href="src/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="src/css/icons/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" type="text/css" href="src/css/extended.css" />
@@ -13,7 +38,7 @@
         <div class="px-md-5 px-4 d-flex flex-row justify-content-between navbar-custom">
             <div class="d-block" role="button" onclick="goToTop()">
                 <div class="d-flex flex-column h-100 justify-content-center">
-                    <img src="https://lucian.solutions/images/4.png" alt="logo" class="logo" loading="lazy" />
+                    <img id="menu-logo" class="logo" loading="lazy" />
                 </div>
             </div>
             <div class="d-md-block d-none">
@@ -75,20 +100,20 @@
         <small class="scroll-down-text">Scroll Down</small>
     </div>
 
-    <div class="min-vh-100 d-flex flex-column justify-content-center" name="content">
+    <div class="min-vh-100 d-flex flex-column justify-content-center" id="content" name="content">
         <div class="container-fluid content-scroll fade-in" id="about">
             <div class="container-md my-md-5 my-2 text-white">
                 <div class="row">
                     <div class="col-md-4 my-auto">
                         <div class="d-flex flex-column justify-content-center">
-                            <h1 class="display-6 text-center"><img src="https://lucian.solutions/images/4.png" class="logo-about" loading="lazy" /></h1>
+                            <h1 class="display-6 text-center"><img id="about-logo" class="logo-about" loading="lazy" /></h1>
                         </div>
                     </div>
                     <div class="col-md-8 my-auto">
                         <div class="d-flex flex-column justify-content-center">
-                            <h1 class="display-6 pb-3 mb-3 header">About VirtUp</h1>
-                            <p class="lead">OUR COMPANY</p>
-                            <p>VirtUp Entertainment Co., Ltd. was established in 2024 with the mission of fostering creativity and bringing imagination to life for everyone. By blending exceptional talents across various fields with the charm and fun of diverse virtual characters, the company delivers captivating works, including Virtual YouTubers, music videos, and much more.</p>
+                            <h1 class="display-6 pb-3 mb-3 header" id="about-title"></h1>
+                            <p class="lead" id="about-subtitle"></p>
+                            <p id="about-description"></p>
                         </div>
                     </div>
                 </div>
@@ -100,24 +125,19 @@
                 <div class="row">
                     <div class="col-md-8 my-auto">
                         <div class="d-flex flex-column justify-content-center">
-                            <h1 class="display-6 pb-3 mb-3 header">Contact Us</h1>
-                            <p class="lead">VirtUp Entertainment Co., Ltd.</p>
-                            <p>
-                                135/11 Amornphan 205 Tower Building 2
-                                7th Floor, Soi Natong, Ratchadapisek Road,
-                                Ratchadaphisek Subdistrict, Din Daeng District,
-                                Bangkok 10400
-                            </p>
+                            <h1 class="display-6 pb-3 mb-3 header" id="contact-title"></h1>
+                            <p class="lead" id="contact-subtitle"></p>
+                            <p id="contact-address"></p>
                         </div>
                     </div>
                     <div class="col-md-4 my-auto">
                         <div class="d-flex flex-column justify-content-center">
-                            <p class="text-md-end text-start mb-0"><span class="lead"><i class="bi bi-envelope accented me-2"></i>official@virtup.me</span></p>
-                            <p class="text-md-end text-start"><span class="lead"><i class="bi bi-telephone accented me-2"></i>082-258-4967</span>&nbsp;(Mew)</p>
+                            <p class="text-md-end text-start mb-0"><span class="lead"><i class="bi bi-envelope accented me-2"></i><span id="contact-email"></span></span></p>
+                            <p class="text-md-end text-start"><span class="lead"><i class="bi bi-telephone accented me-2"></i><span id="contact-phone"></span></span>&nbsp;<span id="contact-phone-name"></span></p>
                             <p class="text-md-end text-center mb-0">
-                                <a href="javascript:void(0)" role="button" class="btn btn-outline-primary rounded-circle border-0"><i class="bi bi-facebook fs-4"></i></a>
-                                <a href="javascript:void(0)" role="button" class="btn btn-outline-light rounded-circle border-0"><i class="bi bi-twitter-x fs-4"></i></a>
-                                <a href="javascript:void(0)" role="button" class="btn btn-outline-danger rounded-circle border-0"><i class="bi bi-youtube fs-4"></i></a>
+                                <a href="javascript:void(0)" role="button" id="social-facebook" class="btn btn-outline-primary rounded-circle border-0"><i class="bi bi-facebook fs-4"></i></a>
+                                <a href="javascript:void(0)" role="button" id="social-x" class="btn btn-outline-light rounded-circle border-0"><i class="bi bi-twitter-x fs-4"></i></a>
+                                <a href="javascript:void(0)" role="button" id="social-youtube" class="btn btn-outline-danger rounded-circle border-0"><i class="bi bi-youtube fs-4"></i></a>
                             </p>
                         </div>
                     </div>
@@ -131,6 +151,7 @@
 </body>
 <script type="text/javascript" src="src/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="src/js/jquery.min.js"></script>
+<script type="text/javascript" src="src/js/index.js"></script>
 <script type="text/javascript" src="src/js/extended.js"></script>
 <script type="text/javascript" src="src/js/mobile_menu.js"></script>
 <script>
@@ -138,6 +159,11 @@
     const date = new Date();
     const year = date.getFullYear();
     presentYear.innerText = year;
+
+    $("#content").ready(async () => {
+        await getHomeDetails();    
+    });
+    
 
     $("#banner").ready(function() {
         $('.fade-in-onload').each(function() {
