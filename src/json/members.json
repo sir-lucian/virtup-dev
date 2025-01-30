@@ -1,65 +1,27 @@
 {
+    "is_success": true,
+    "response_code": 200,
     "data": [
         {
-            "group": {
-                "name": "Group 1",
-                "color": "#000000",
-                "members": [
-                    {
-                        "name": "Member 1",
-                        "subtitle": "Subtitle 1",
-                        "description": "Description 1",
-                        "image_path": "src/assets/images/members/member1.jpg",
-                        "main_color": "#000000",
-                        "sub_color": "#000000",
-                        "youtube": {
-                            "channel_channel": "Channel 1",
-                            "channel_handle": "handle1"
-                        }
-                    },{
-                        "name": "Member 2",
-                        "subtitle": "Subtitle 2",
-                        "description": "Description 2",
-                        "image_path": "src/assets/images/members/member1.jpg",
-                        "main_color": "#000000",
-                        "sub_color": "#000000",
-                        "youtube": {
-                            "channel_name": "Channel 2",
-                            "channel_handle": "handle2"
-                        }
-                    }
-                ]
+            "name": "Member 1",
+            "group_id": 1,
+            "seq_in_group": 1,
+            "description": "Description 1",
+            "image_path": "https://virtup.me/src/images/virtual-influencers/",
+            "color": "#000000",
+            "youtube": {
+                "channel_handle": "@handle1"
             }
         },
         {
-            "group": {
-                "name": "Group 2",
-                "color": "#000000",
-                "members": [
-                    {
-                        "name": "Member 3",
-                        "subtitle": "Subtitle 3",
-                        "description": "Description 3",
-                        "image_path": "src/assets/images/members/member3.jpg",
-                        "main_color": "#000000",
-                        "sub_color": "#000000",
-                        "youtube": {
-                            "channel_channel": "Channel 3",
-                            "channel_handle": "handle3"
-                        }
-                    },{
-                        "name": "Member 4",
-                        "subtitle": "Subtitle 4",
-                        "description": "Description 4",
-                        "image_path": "src/assets/images/members/member4.jpg",
-                        "main_color": "#000000",
-                        "sub_color": "#000000",
-                        "youtube": {
-                            "channel_name": "Channel 4",
-                            "channel_handle": "handle4"
-                        }
-                    }
-                ]
+            "name": "Member 2",
+            "group_id": 1,
+            "seq_in_group": 2,
+            "description": "Description 2",
+            "image_path": "https://virtup.me/src/images/virtual-influencers/",
+            "color": "#000000",
+            "youtube": {
+                "channel_handle": "@handle2"
             }
         }
     ]

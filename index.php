@@ -2,7 +2,7 @@
 function getWebDetails()
 {
 
-    define("PATH", 'localhost/virtup-web/src/json/home.json');
+    define("PATH", 'https://dev.lucian.solutions/virtup-web/src/json/home.json');
 
     $url = PATH;
     $ch = curl_init($url);
@@ -166,9 +166,9 @@ if (isset($response->is_success) && $response->is_success === true) {
     <meta name="twitter:url" content="<?php echo $meta_url; ?>" />
     <meta name="robots" content="index,follow" />
 
-    <meta property="og:image" content="https://lucian.solutions/images/22t.jpg" />
-    <meta property="og:image:secure_url" content="https://lucian.solutions/images/22t.jpg" />
-    <meta name="twitter:image" content="https://lucian.solutions/images/22t.jpg" />
+    <meta property="og:image" content="<?php echo $about_logo ?>" />
+    <meta property="og:image:secure_url" content="<?php echo $about_logo ?>" />
+    <meta name="twitter:image" content="<?php echo $about_logo ?>" />
 
     <meta name="msapplication-TileColor" content="<?php echo $meta_color; ?>" />
     <meta name="theme-color" content="<?php echo $meta_color; ?>">
@@ -186,7 +186,7 @@ if (isset($response->is_success) && $response->is_success === true) {
         <div class="px-md-5 px-4 d-flex flex-row justify-content-between navbar-custom">
             <div class="d-block" role="button" onclick="goToTop()">
                 <div class="d-flex flex-column h-100 justify-content-center">
-                    <img id="menu-logo" src="<?php echo $about_logo ?>" alt="<?php echo $about_logo_alt ?> Logo" class="logo" loading="lazy" />
+                    <img id="menu-logo" <?php echo $about_logo ? 'style="display: none;"' : '' ?> src="<?php echo $about_logo ?>" alt="<?php echo $about_logo_alt ?> Logo" class="logo" loading="lazy" />
                 </div>
             </div>
             <div class="d-md-block d-none">
@@ -250,12 +250,7 @@ if (isset($response->is_success) && $response->is_success === true) {
     </div>
 
     <div class="min-vh-100 d-flex flex-column justify-content-center" id="content" name="content">
-        <div class="<?php if ($hasAbout == true) {
-            echo "container-fluid content-scroll fade-in";
-        } else {
-            echo "d-none";
-        } ?>"
-            id="about">
+        <div class="<?php echo $hasAbout == true ? "container-fluid content-scroll fade-in" : "d-none"; ?>" id="about">
             <div class="container-md my-md-5 my-2 text-white">
                 <div class="row">
                     <div class="col-md-4 my-auto">
@@ -276,12 +271,7 @@ if (isset($response->is_success) && $response->is_success === true) {
             </div>
         </div>
 
-        <div class="<?php if ($hasContact == true) {
-            echo "container-fluid content-scroll fade-in";
-        } else {
-            echo "d-none";
-        } ?>"
-            id="contact">
+        <div class="<?php echo $hasContact == true ? "container-fluid content-scroll fade-in" : "d-none"; ?>" id="contact">
             <div class="container-md my-md-5 my-2 text-white">
                 <div class="row">
                     <div class="col-md-8 my-auto">
@@ -298,8 +288,8 @@ if (isset($response->is_success) && $response->is_success === true) {
                                         id="contact-email"><?php echo $contact_email ?></span></span></p>
                             <p class="text-md-end text-start"><span class="lead"><i
                                         class="bi bi-telephone accented me-2"></i><span
-                                        id="contact-phone"><?php echo $contact_phone ?></span></span>&nbsp;(<span
-                                    id="contact-phone-name"><?php echo $contact_phone_name ?></span>)</p>
+                                        id="contact-phone"><?php echo $contact_phone ?></span></span>&nbsp;<?php echo $contact_phone_name !== "" ? "(" : "" ?><span
+                                    id="contact-phone-name"><?php echo $contact_phone_name ?></span><?php echo $contact_phone_name !== "" ? ")" : "" ?></p>
                             <p class="text-md-end text-center mb-0">
                                 <a href="<?php echo $contact_social_facebook ?>" role="button" id="social-facebook"
                                     class="btn btn-outline-primary rounded-circle border-0"><i

@@ -3,7 +3,7 @@
 function getWebDetails()
 {
 
-    define("PATH", 'localhost/virtup-web/src/json/home.json');
+    define("PATH", 'https://dev.lucian.solutions/virtup-web/src/json/home.json');
 
     $url = PATH;
     $ch = curl_init($url);
@@ -47,8 +47,8 @@ if (isset($response->is_success) && $response->is_success === true) {
         switch ($section->section) {
             case "metadata":
                 if (isset($section->details)) {
-                    if (isset($section->details->website_name)) {
-                        $meta_name = $section->details->website_name;
+                    if (isset($section->details->members_name)) {
+                        $meta_name = $section->details->members_name;
                     }
                     if (isset($section->details->website_description)) {
                         $meta_description = $section->details->website_description;
@@ -109,9 +109,9 @@ if (isset($response->is_success) && $response->is_success === true) {
     <meta name="twitter:url" content="<?php echo $meta_url; ?>" />
     <meta name="robots" content="index,follow" />
 
-    <meta property="og:image" content="https://lucian.solutions/images/22t.jpg" />
-    <meta property="og:image:secure_url" content="https://lucian.solutions/images/22t.jpg" />
-    <meta name="twitter:image" content="https://lucian.solutions/images/22t.jpg" />
+    <meta property="og:image" content="<?php echo $about_logo ?>" />
+    <meta property="og:image:secure_url" content="<?php echo $about_logo ?>" />
+    <meta name="twitter:image" content="<?php echo $about_logo ?>" />
 
     <meta name="msapplication-TileColor" content="<?php echo $meta_color; ?>" />
     <meta name="theme-color" content="<?php echo $meta_color; ?>">
