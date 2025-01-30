@@ -1,5 +1,18 @@
 {
+    "is_success": true,
+    "response_code": 200,
     "data": [
+        {
+            "section": "metadata",
+            "details": {
+                "website_name": "VirtUp",
+                "website_description": "VirtUp Entertainment Co., Ltd.",
+                "website_company": "VirtUp Entertainment Co., Ltd.",
+                "website_url": "https://virtup.me",
+                "website_color": "#32E3A8",
+                "members_url": "https://virtup.me/virtual-influencers"
+            }
+        },
         {
             "section": "about",
             "details": {
@@ -20,7 +33,7 @@
                 "address": "135/11 Amornphan 205 Tower Building 2 7th Floor, Soi Natong, Ratchadapisek Road, Ratchadaphisek Subdistrict, Din Daeng District, Bangkok 10400",
                 "email": "official@virtup.me",
                 "phone": "082-258-4967",
-                "phone_name": "(Mew)",
+                "phone_name": "Mew",
                 "social": {
                     "facebook": "https://facebook.com",
                     "x": "https://x.com",

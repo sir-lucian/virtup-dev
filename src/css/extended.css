@@ -96,6 +96,10 @@ div.hideMenu {
     width: auto;
 }
 
+#hamburger_menu {
+    transition: 0.35s ease-in-out;
+}
+
 .header {
     border-bottom: 5px solid var(--accented-color);
     width: fit-content;
