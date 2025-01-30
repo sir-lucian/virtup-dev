@@ -6,11 +6,12 @@
             "section": "metadata",
             "details": {
                 "website_name": "VirtUp",
+                "members_name": "VirtUp | Virtual Influencers",
                 "website_description": "VirtUp Entertainment Co., Ltd.",
                 "website_company": "VirtUp Entertainment Co., Ltd.",
                 "website_url": "https://virtup.me",
-                "website_color": "#32E3A8",
-                "members_url": "https://virtup.me/virtual-influencers"
+                "members_url": "https://virtup.me/virtual-influencers",
+                "website_color": "#32E3A8"
             }
         },
         {
