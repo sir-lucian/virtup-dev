@@ -3,25 +3,102 @@
     "response_code": 200,
     "data": [
         {
-            "name": "Member 1",
-            "group_id": 1,
-            "seq_in_group": 1,
-            "description": "Description 1",
-            "image_path": "https://virtup.me/src/images/virtual-influencers/",
-            "color": "#000000",
+            "name": "Draki Kona",
+            "group_name": "Lumina First Myth",
+            "group_code": "lumina_first_myth",
+            "image_profile": "pf_Kona.jpg",
+            "image_full": "kona.png",
+            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
-                "channel_handle": "@handle1"
+                "channel_handle": "@DrakiKona"
             }
         },
         {
-            "name": "Member 2",
-            "group_id": 1,
-            "seq_in_group": 2,
-            "description": "Description 2",
-            "image_path": "https://virtup.me/src/images/virtual-influencers/",
-            "color": "#000000",
+            "name": "Kamiyu Reirin",
+            "group_name": "Lumina First Myth",
+            "group_code": "lumina_first_myth",
+            "image_profile": "pf_Reirin.jpg",
+            "image_full": "reirin.png",
+            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
-                "channel_handle": "@handle2"
+                "channel_handle": "@KamiyuReirin"
+            }
+        },
+        {
+            "name": "Cerafine Mikael",
+            "group_name": "Lumina First Myth",
+            "group_code": "lumina_first_myth",
+            "image_profile": "pf_Mikael.jpg",
+            "image_full": "mika.png",
+            "color": "rgba(0, 0 ,0 ,0)",
+            "youtube": {
+                "channel_handle": "@CerafineMikael"
+            }
+        },
+        {
+            "name": "Ardalita Lilibelle",
+            "group_name": "Lumina First Myth",
+            "group_code": "lumina_first_myth",
+            "image_profile": "pf_Lilibelle.jpg",
+            "image_full": "lilibelle.png",
+            "color": "rgba(0, 0 ,0 ,0)",
+            "youtube": {
+                "channel_handle": "@ArdalitaLilibelle"
+            }
+        },
+        {
+            "name": "Atlanteia Sireen",
+            "group_name": "Lumina First Myth",
+            "group_code": "lumina_first_myth",
+            "image_profile": "pf_Sireen.jpg",
+            "image_full": "sireen.png",
+            "color": "rgba(0, 0 ,0 ,0)",
+            "youtube": {
+                "channel_handle": "@AtlanteiaSireen"
+            }
+        },
+        {
+            "name": "Beta AMI",
+            "group_name": "Lumina World End",
+            "group_code": "lumina_world_end",
+            "image_profile": "pf_AMI.jpg",
+            "image_full": "AMI.png",
+            "color": "rgba(0, 0 ,0 ,0)",
+            "youtube": {
+                "channel_handle": "@AMIWorldEnd"
+            }
+        },
+        {
+            "name": "Xonebu X'thulhu",
+            "group_name": "Lumina World End",
+            "group_code": "lumina_world_end",
+            "image_profile": "pf_Xonebu.jpg",
+            "image_full": "xonebu.png",
+            "color": "rgba(0, 0 ,0 ,0)",
+            "youtube": {
+                "channel_handle": "@XonebuWorldEnd"
+            }
+        },
+        {
+            "name": "Kumoku Tsururu",
+            "group_name": "Lumina World End",
+            "group_code": "lumina_world_end",
+            "image_profile": "pf_Tsururu.jpg",
+            "image_full": "tsururu.png",
+            "color": "rgba(0, 0 ,0 ,0)",
+            "youtube": {
+                "channel_handle": "@TsururuWorldEnd"
+            }
+        },
+        {
+            "name": "T-Reina Ashyra",
+            "group_name": "Lumina World End",
+            "group_code": "lumina_world_end",
+            "image_profile": "pf_Ashyra.jpg",
+            "image_full": "ashyra.png",
+            "color": "rgba(0, 0 ,0 ,0)",
+            "youtube": {
+                "channel_handle": "@AshyraWorldEnd"
             }
         }
     ]
