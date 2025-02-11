@@ -4,29 +4,36 @@
 }
 
 :root {
-    --accented-color: #32E3A8;
+    --accented-color: #09E4A2;
     --dark: rgba(11, 11, 11, 1);
+    --light: rgba(230, 230, 230, 1);
 }
 
 body {
-    background-color: rgb(11,11,11);
+    background-color: rgb(230, 230, 230);
     font-family: "Monserrat", sans-serif;
+    overflow-x: hidden;
 }
 
 div.banner {
     width: 100%;
     height: 100vh;
+    background-color: var(--dark);
     background-size: cover;
     background-position: center;
     z-index: -1;
 }
 
 div#banner{
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, var(--dark)), url("https://lucian.solutions/images/303.png");
+    background-image: linear-gradient(to bottom, rgba(230, 230, 230, 0) 50%, var(--light)), url("https://dev.lucian.solutions/virtup-web/src/images/cover.jpg");
 }
 
-div#banner2 {
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, var(--dark)), url("https://lucian.solutions/images/301.png");
+#cover-video {
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .scroll-down-text {
@@ -35,11 +42,11 @@ div#banner2 {
 }
 
 div.banner:hover .scroll-down-text{
-    color: white;
+    color: var(--dark);
 }
 
 div.navbar-custom {
-    background-color: rgba(11,11,11,0.85);
+    background-color: rgba(11, 11, 11, 0.75);
 }
 
 div.showMenu {
@@ -51,6 +58,7 @@ div.showMenu {
 div.hideMenu {
     opacity: 0;
     pointer-events: none;
+    height: 0px;
     transition: 0.25s ease-in-out;
 }
 
@@ -81,29 +89,53 @@ div.hideMenu {
 }
 
 .logo {
-    height: 5rem;
+    height: 2rem;
     width: auto;
-    padding: 0.5rem 0;
+}
+
+#menu-logo {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .logo-about {
     width: 100%;
+    max-width: 20rem;
+    padding: 3rem 0;
     height: auto;
 }
 
+.go-to-next-section-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 3;
+}
+
 .hamburger_menu {
-    height: 2.5rem;
+    height: 1.25rem;
     width: auto;
 }
 
 #hamburger_menu {
     transition: 0.35s ease-in-out;
+    font-size: 2rem;
 }
 
 .header {
     border-bottom: 5px solid var(--accented-color);
     width: fit-content;
     font-weight: 600;
+}
+
+.member-photo {
+    width: 100%;
+    height: auto;
+    transition: 0.25s ease-in-out;
+}
+
+.member-photo:hover {
+    transform: scale(1.1);
 }
 
 .menu-btn {
@@ -115,6 +147,7 @@ div.hideMenu {
 }
 
 .menu-text {
+    color: white;
     font-size: 1.25rem;
     text-decoration: none;
 }
@@ -162,4 +195,55 @@ div.hideMenu {
     opacity: 1;
     transform: none;
     visibility: visible;
+}
+
+.social-btn {
+    color: white;
+    background-color: var(--dark);
+    font-weight: 600;
+    position: relative;
+    text-align: center;
+    padding: 0.5rem 0;
+    text-decoration: none;
+}
+
+.social-text {
+    color: white;
+    font-size: 1.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.overlay-social-btn {
+    position: absolute;
+    pointer-events: none;
+    height: 100%;
+    width: 0%;
+    top: 0;
+    transition: width 0.25s ease-in-out;
+}
+
+.overlay-social-btn-x {
+    background-color: white;
+}
+
+.overlay-social-btn-youtube {
+    background-color: var(--bs-danger);
+}
+
+.overlay-social-btn-facebook {
+    background-color: var(--bs-primary);
+}
+
+.social-text-x {
+    transition: 0.25s ease-in-out;
+}
+
+.social-btn-x:hover .social-text-x {
+    color: var(--dark);
+}
+
+.social-btn:hover .overlay-social-btn {
+    width: 100%;
 }

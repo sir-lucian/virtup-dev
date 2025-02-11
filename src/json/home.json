@@ -6,12 +6,10 @@
             "section": "metadata",
             "details": {
                 "website_name": "VirtUp",
-                "members_name": "VirtUp | Virtual Influencers",
                 "website_description": "VirtUp Entertainment Co., Ltd.",
                 "website_company": "VirtUp Entertainment Co., Ltd.",
                 "website_url": "https://virtup.me",
-                "members_url": "https://virtup.me/virtual-influencers",
-                "website_color": "#32E3A8"
+                "website_color": "#09E4A2"
             }
         },
         {
@@ -19,8 +17,9 @@
             "details": {
                 "logo": {
                     "alt": "VirtUp Logo",
-                    "path": "https://lucian.solutions/images/4.png"
+                    "path": "https://dev.lucian.solutions/virtup-web/src/images/logo.png"
                 },
+                "video": "https://dev.lucian.solutions/virtup-web/src/images/videocover.mp4",
                 "title": "About VirtUp",
                 "subtitle": "OUR COMPANY",
                 "description": "VirtUp Entertainment Co., Ltd. was established in 2024 with the mission of fostering creativity and bringing imagination to life for everyone. By blending exceptional talents across various fields with the charm and fun of diverse virtual characters, the company delivers captivating works, including Virtual YouTubers, music videos, and much more."

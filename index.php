@@ -1,28 +1,20 @@
 <?php
+
+error_reporting(E_ERROR | E_PARSE);
 function getWebDetails()
 {
+    define("PATH", dirname(__DIR__).'/virtup-web/src/json/home.json');
 
-    define("PATH", 'https://dev.lucian.solutions/virtup-web/src/json/home.json');
-
-    $url = PATH;
-    $ch = curl_init($url);
-
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Accept: application/json',
-        'Content-Type: application/json',
-    ]);
-
-    $response = curl_exec($ch);
-    curl_close($ch);
-
-    if (curl_error($ch)) {
+    try {
+        $json = file_get_contents(PATH);
+    } catch (Error $e) {
+        exit;
+    }
+    
+    if (!$json) {
         return json_encode(["is_success" => false, "message_error" => "File Not Found", "response_code" => 404]);
     } else {
-        return $response;
+        return $json;
     }
 }
 
@@ -43,6 +35,7 @@ $about_subtitle = "";
 $about_description = "";
 $about_logo = "";
 $about_logo_alt = "";
+$about_video = "";
 
 $contact_title = "";
 $contact_subtitle = "";
@@ -97,6 +90,9 @@ if (isset($response->is_success) && $response->is_success === true) {
                         if (isset($section->details->logo->alt)) {
                             $about_logo_alt = $section->details->logo->alt;
                         }
+                    }
+                    if (isset($section->details->video)) {
+                        $about_video = $section->details->video;
                     }
                 }
                 break;
@@ -175,51 +171,53 @@ if (isset($response->is_success) && $response->is_success === true) {
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="<?php echo $meta_color; ?>" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="<?php echo $meta_color; ?>" />
 
-    <title>VirtUp</title>
+    <title><?php echo $meta_name; ?></title>
+    <link rel="shortcut icon" href="/virtup-web/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="src/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="src/css/icons/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" type="text/css" href="src/css/extended.css" />
 </head>
 
 <body>
-    <div class="position-fixed w-100" style="z-index:5;">
-        <div class="px-md-5 px-4 d-flex flex-row justify-content-between navbar-custom">
+    <section id="top-section">
+    <div class="position-fixed vw-100" style="z-index:5;">
+        <div class="px-md-5 px-4 d-flex flex-row justify-content-between navbar-custom" style="min-height: 5rem;">
             <div class="d-block" role="button" onclick="goToTop()">
                 <div class="d-flex flex-column h-100 justify-content-center">
-                    <img id="menu-logo" <?php echo $about_logo ? 'style="display: none;"' : '' ?> src="<?php echo $about_logo ?>" alt="<?php echo $about_logo_alt ?> Logo" class="logo" loading="lazy" />
+                    <div class="d-block py-3"><img id="menu-logo" <?php echo $about_logo ? '' : 'style="display: none !important;"' ?> src="<?php echo $about_logo ?? "" ?>" alt="<?php echo $about_logo_alt ?> Logo" class="logo d-inline-block" /></div>
                 </div>
             </div>
-            <div class="d-md-block d-none">
+            <div class="d-lg-block d-none">
                 <div class="d-flex flex-row h-100">
-                    <a href="javascript:void(0)" class="d-block menu-btn" role="button" onclick="goToTop()">
+                    <a href="javascript:void(0)" class="d-block menu-btn" role="button" onclick="goToTop();checkScrollPosition()">
                         <div class="d-flex flex-column h-100 justify-content-center">
                             <div class="d-block mx-3 menu-text">Home</div>
                         </div>
                         <div class="overlay-menu-btn"></div>
                     </a>
-                    <a href="virtual-influencers" class="d-block menu-btn">
+                    <a href="#virtual-influencers" class="d-block menu-btn" onclick="checkScrollPosition()">
                         <div class="d-flex flex-column h-100 justify-content-center">
                             <div class="d-block mx-3 menu-text">Our Virtual Influencers</div>
                         </div>
                         <div class="overlay-menu-btn"></div>
                     </a>
                     <a href="#about" class="d-block menu-btn">
-                        <div class="d-flex flex-column h-100 justify-content-center">
+                        <div class="d-flex flex-column h-100 justify-content-center" onclick="checkScrollPosition()">
                             <div class="d-block mx-3 menu-text">About VirtUp</div>
                         </div>
                         <div class="overlay-menu-btn"></div>
                     </a>
                     <a href="#contact" class="d-block menu-btn">
-                        <div class="d-flex flex-column h-100 justify-content-center">
+                        <div class="d-flex flex-column h-100 justify-content-center" onclick="checkScrollPosition()">
                             <div class="d-block mx-3 menu-text">Contact Us</div>
                         </div>
                         <div class="overlay-menu-btn"></div>
                     </a>
                 </div>
             </div>
-            <div class="d-md-none d-block" role="button" onclick="toggleMobileNav()">
-                <div class="d-flex flex-column h-100 justify-content-center" id="hamburger_menu">
-                    <i class="bi bi-list text-white display-3"></i>
+            <div class="d-lg-none d-flex" role="button" onclick="toggleMobileNav()" aria-label="Open the menu">
+                <div class="d-flex flex-column h-100 justify-content-center" id="hamburger_menu" aria-hidden=”true”>
+                    <i class="bi bi-list text-white"></i>
                 </div>
             </div>
         </div>
@@ -227,40 +225,93 @@ if (isset($response->is_success) && $response->is_success === true) {
             <div class="d-flex flex-row justify-content-end">
                 <div class="navbar-custom rounded-3">
                     <a href="javascript:void(0)" role="button" class="text-white text-decoration-none" role="button"
-                        onclick="goToTop();toggleMobileNav();">
-                        <div class="d-block mobile-nav-item text-end">Home</div>
+                        onclick="goToTop();toggleMobileNav();checkScrollPosition()">
+                        <div class="d-block mobile-nav-item text-end text-white">Home</div>
                     </a>
-                    <a href="virtual-influencers" class="text-white text-decoration-none" onclick="toggleMobileNav();">
-                        <div class="d-block mobile-nav-item text-end">Our Virtual Influencers</div>
+                    <a href="#virtual-influencers" class="text-black text-decoration-none" onclick="toggleMobileNav();checkScrollPosition()">
+                        <div class="d-block mobile-nav-item text-end text-white">Our Virtual Influencers</div>
                     </a>
-                    <a href="#about" class="text-white text-decoration-none" onclick="toggleMobileNav();">
-                        <div class="d-block mobile-nav-item text-end">About VirtUp</div>
+                    <a href="#about" class="text-black text-decoration-none" onclick="toggleMobileNav();checkScrollPosition()">
+                        <div class="d-block mobile-nav-item text-end text-white">About VirtUp</div>
                     </a>
-                    <a href="#contact" class="text-white text-decoration-none" onclick="toggleMobileNav();">
-                        <div class="d-block mobile-nav-item text-end">Contact Us</div>
+                    <a href="#contact" class="text-black text-decoration-none" onclick="toggleMobileNav();checkScrollPosition()">
+                        <div class="d-block mobile-nav-item text-end text-white">Contact Us</div>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="banner" class="d-flex flex-column justify-content-end pb-5 text-center banner fade-in-onload">
-        <i class="display-6 bi bi-chevron-down scroll-down-text"></i>
-        <small class="scroll-down-text">Scroll Down</small>
+    
+    <div id="goToNextSection" onclick="scrollToNextSection(scrollSection)" class="go-to-next-section-btn btn btn-sm btn-light shadow border p-3 text-nowrap fw-bold">
+        <span id="nextSectionIs" class="fs-3"><i class="bi bi-chevron-down"></i></span>
     </div>
 
-    <div class="min-vh-100 d-flex flex-column justify-content-center" id="content" name="content">
-        <div class="<?php echo $hasAbout == true ? "container-fluid content-scroll fade-in" : "d-none"; ?>" id="about">
-            <div class="container-md my-md-5 my-2 text-white">
+    <div id="banner" class="text-center banner fade-in-onload">
+        <video class="<?php echo $hasContact == true && $about_video ? "" : "d-none"?>" autoplay playsinline muted loop id="cover-video" disablePictureInPicture controlsList="nodownload">
+            <source src="<?php echo $about_video ?>" type="video/mp4">
+        </video>
+    </div>
+
+    
+    <div class="container-fluid<?php echo $hasContact == true ? "" : " d-none"?>">
+    <div class="row" id="social-row">
+        <a href="<?php echo $contact_social_x ?? "javascript:void(0)" ?>" class="d-block col-4 social-btn social-btn-x" role="button">
+            <div class="d-flex flex-column h-100 justify-content-center">
+                <div class="d-block mx-3 my-5 social-text social-text-x">
+                    <i class="bi bi-twitter-x fs-1"></i>
+                    <div class="text-nowrap mt-2 lead d-sm-block d-none">Twitter / X</div>
+                </div>
+            </div>
+            <div class="overlay-social-btn overlay-social-btn-x"></div>
+        </a>
+        <a href="<?php echo $contact_social_youtube ?? "javascript:void(0)" ?>" class="d-block col-4 social-btn" role="button">
+            <div class="d-flex flex-column h-100 justify-content-center">
+                <div class="d-block mx-3 my-5 social-text">
+                    <i class="bi bi-youtube fs-1"></i>
+                    <div class="text-nowrap mt-2 lead d-sm-block d-none">YouTube</div>
+                </div>
+            </div>
+            <div class="overlay-social-btn overlay-social-btn-youtube"></div>
+        </a>
+        <a href="<?php echo $contact_social_facebook ?? "javascript:void(0)" ?>" class="d-block col-4 social-btn" role="button">
+            <div class="d-flex flex-column h-100 justify-content-center">
+                <div class="d-block mx-3 my-5 social-text">
+                    <i class="bi bi-facebook fs-1"></i>
+                    <div class="text-nowrap mt-2 lead d-sm-block d-none">Facebook</div>
+                </div>
+            </div>
+            <div class="overlay-social-btn overlay-social-btn-facebook"></div>
+        </a>
+    </div>
+    </div>
+    </section>
+
+    <div class="min-vh-100 d-flex flex-column justify-content-center pt-3" id="content" name="content" data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true">
+        <section id="virtual-influencers-section">
+        <div class="container-fluid content-scroll fade-in" id="virtual-influencers" style="display: none; scroll-margin-top: 7em;" >
+            <div class="container-lg my-lg-3 my-2 text-black bg-white shadow-sm p-5 rounded-3" id="virtual-influencers-info">
+                <div class="text-center py-5">
+                    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <section id="about-section">
+        <div class="<?php echo $hasAbout == true ? "container-fluid content-scroll fade-in" : "d-none"; ?>" id="about" style="scroll-margin-top: 7em;">
+            <div class="container-lg my-lg-3 my-2 text-black bg-white shadow-sm p-5 rounded-3">
                 <div class="row">
-                    <div class="col-md-4 my-auto">
+                    <div class="col-lg-4 my-auto">
                         <div class="d-flex flex-column justify-content-center">
                             <h1 class="display-6 text-center"><img src="<?php echo $about_logo ?>"
                                     alt="<?php echo $about_logo_alt ?>" id="about-logo" class="logo-about"
                                     loading="lazy" /></h1>
                         </div>
                     </div>
-                    <div class="col-md-8 my-auto">
+                    <div class="col-lg-8 my-auto">
                         <div class="d-flex flex-column justify-content-center">
                             <h1 class="display-6 pb-3 mb-3 header" id="about-title"><?php echo $about_title ?></h1>
                             <p class="lead" id="about-subtitle"><?php echo $about_subtitle ?></p>
@@ -270,35 +321,37 @@ if (isset($response->is_success) && $response->is_success === true) {
                 </div>
             </div>
         </div>
+        </section>
 
-        <div class="<?php echo $hasContact == true ? "container-fluid content-scroll fade-in" : "d-none"; ?>" id="contact">
-            <div class="container-md my-md-5 my-2 text-white">
+        <section id="contact-section">
+        <div class="<?php echo $hasContact == true ? "container-fluid content-scroll fade-in" : "d-none"; ?>" id="contact" style="scroll-margin-top: 7em;">
+            <div class="container-lg my-lg-3 my-2 text-black bg-white shadow-sm p-5 rounded-3">
                 <div class="row">
-                    <div class="col-md-8 my-auto">
+                    <div class="col-lg-8 my-auto">
                         <div class="d-flex flex-column justify-content-center">
                             <h1 class="display-6 pb-3 mb-3 header" id="contact-title"><?php echo $contact_title ?></h1>
                             <p class="lead" id="contact-subtitle"><?php echo $contact_subtitle ?></p>
                             <p id="contact-address"><?php echo $contact_address ?></p>
                         </div>
                     </div>
-                    <div class="col-md-4 my-auto">
+                    <div class="col-lg-4 my-auto">
                         <div class="d-flex flex-column justify-content-center">
-                            <p class="text-md-end text-start mb-0"><span class="lead"><i
+                            <p class="text-lg-end text-start mb-0 text-nowrap"><span class="lead"><i
                                         class="bi bi-envelope accented me-2"></i><span
                                         id="contact-email"><?php echo $contact_email ?></span></span></p>
-                            <p class="text-md-end text-start"><span class="lead"><i
+                            <p class="text-lg-end text-start text-nowrap"><span class="lead"><i
                                         class="bi bi-telephone accented me-2"></i><span
                                         id="contact-phone"><?php echo $contact_phone ?></span></span>&nbsp;<?php echo $contact_phone_name !== "" ? "(" : "" ?><span
                                     id="contact-phone-name"><?php echo $contact_phone_name ?></span><?php echo $contact_phone_name !== "" ? ")" : "" ?></p>
-                            <p class="text-md-end text-center mb-0">
-                                <a href="<?php echo $contact_social_facebook ?>" role="button" id="social-facebook"
-                                    class="btn btn-outline-primary rounded-circle border-0"><i
+                            <p class="text-lg-end text-center mt-2 mb-0">
+                                <a href="<?php echo $contact_social_facebook ?? "javascript:void(0)" ?>" role="button" id="social-facebook"
+                                    class="btn btn-outline-primary p-3 rounded-pill border-0"><i
                                         class="bi bi-facebook fs-4"></i></a>
-                                <a href="<?php echo $contact_social_x ?>" role="button" id="social-x"
-                                    class="btn btn-outline-light rounded-circle border-0"><i
+                                <a href="<?php echo $contact_social_x ?? "javascript:void(0)" ?>" role="button" id="social-x"
+                                    class="btn btn-outline-dark p-3 rounded-pill border-0"><i
                                         class="bi bi-twitter-x fs-4"></i></a>
-                                <a href="<?php echo $contact_social_youtube ?>" role="button" id="social-youtube"
-                                    class="btn btn-outline-danger rounded-circle border-0"><i
+                                <a href="<?php echo $contact_social_youtube ?? "javascript:void(0)" ?>" role="button" id="social-youtube"
+                                    class="btn btn-outline-danger p-3 rounded-pill border-0"><i
                                         class="bi bi-youtube fs-4"></i></a>
                             </p>
                         </div>
@@ -306,10 +359,20 @@ if (isset($response->is_success) && $response->is_success === true) {
                 </div>
             </div>
         </div>
+        </section>
 
-        <p class="text-white text-center mt-md-5 mt-2">&copy;&nbsp;All Rights reserved by VirtUp Entertainment Co., Ltd.
+        <p class="text-center mt-md-3 mt-2">&copy;&nbsp;All Rights reserved by VirtUp Entertainment Co., Ltd.
             <small class="text-secondary">2024-<?php echo date("Y"); ?></small></p>
     </div>
+
+    <div class="modal fade" tabindex="-1" id="fullMemberInfo">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body" id="fullMemberInfoBody"></div>
+            </div>
+        </div>
+    </div>
+    
 
 </body>
 <script type="text/javascript" src="src/js/bootstrap.min.js"></script>
@@ -317,8 +380,20 @@ if (isset($response->is_success) && $response->is_success === true) {
 <script type="text/javascript" src="src/js/extended.js"></script>
 <script type="text/javascript" src="src/js/mobile_menu.js"></script>
 <script>
+    let scrollSection;
+
     $("#banner").ready(function () {
         $('.fade-in-onload').each(function () {
+            $(this).addClass('is-visible');
+        });
+    });
+
+    $(window).ready(async function () {
+        await loadMembers();
+    });
+
+    $(window).ready(function () {
+        $('.fade-in').each(function () {
             var top_of_element = $(this).offset().top;
             var bottom_of_element = $(this).offset().top + $(this).outerHeight();
             var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
@@ -328,6 +403,16 @@ if (isset($response->is_success) && $response->is_success === true) {
                 $(this).addClass('is-visible');
             }
         });
+        $('section').each(function () {
+            if($(this).position().top - 50 <= $(document).scrollTop() && ($(this).position().top - 50 + $(this).outerHeight()) > $(document).scrollTop()) {
+                scrollSection = $(this).attr('id');
+            }
+        });
+        if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
+            document.getElementById('nextSectionIs').innerHTML = `<i class="bi bi-chevron-up"></i>`;
+        } else {
+            document.getElementById('nextSectionIs').innerHTML = `<i class="bi bi-chevron-down"></i>`;
+        }
     });
 
     $(window).scroll(function () {
@@ -341,6 +426,16 @@ if (isset($response->is_success) && $response->is_success === true) {
                 $(this).addClass('is-visible');
             }
         });
+        $('section').each(function () {
+            if($(this).position().top - 50 <= $(document).scrollTop() && ($(this).position().top - 50 + $(this).outerHeight()) > $(document).scrollTop()) {
+                scrollSection = $(this).attr('id');
+            }
+        });
+        if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
+            document.getElementById('nextSectionIs').innerHTML = `<i class="bi bi-chevron-up"></i>`;
+        } else {
+            document.getElementById('nextSectionIs').innerHTML = `<i class="bi bi-chevron-down"></i>`;
+        }
     });
 </script>
 
