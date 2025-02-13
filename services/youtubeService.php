@@ -2,7 +2,7 @@
 
 define(
     'KEY',
-    'AIzaSyCziYB8qZtVEKBH86JTkEKAbnuS-9HiF9U' // TOKEN VALUE HERE
+    'TOKEN VALUE HERE'
 );
 function getErrorResponse($code = 400)
 {
