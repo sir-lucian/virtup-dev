@@ -3,7 +3,7 @@ function goToTop() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
     const currentURL = window.location.href;
-    const urlWithoutHash = currentURL.split("#")[0];
+    const urlWithoutHash = currentURL.split('#')[0];
     window.history.replaceState({}, document.title, urlWithoutHash);
 }
 
@@ -46,7 +46,6 @@ async function getData(path = undefined) {
                 } else {
                     return undefined;
                 }
-                
             } else {
                 return undefined;
             }
@@ -57,46 +56,56 @@ async function getData(path = undefined) {
 }
 
 async function showMemberInfo(index) {
-    const fullMemberInfoBody = document.getElementById("fullMemberInfoBody");
+    const fullMemberInfoBody = document.getElementById('fullMemberInfoBody');
     fullMemberInfoBody.innerHTML = `<div class="d-flex justify-content-center"><div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status"><span class="visually-hidden">Loading...</span></div></div>`;
-    $("#fullMemberInfo").modal("show");
-    const members = await getData("/virtup-web/src/json/members.json");
-    if (members && Array.isArray(members)){
+    $('#fullMemberInfo').modal('show');
+    const members = await getData('/virtup-web/src/json/members.json');
+    if (members && Array.isArray(members)) {
         if (members[index] && members[index].youtube.channel_handle) {
-            const rawRes = await getData('/virtup-web/services/youtubeService.php?handle=' + members[index].youtube.channel_handle);
+            const rawRes = await getData(
+                '/virtup-web/services/youtubeService.php?handle=' +
+                    members[index].youtube.channel_handle
+            );
             const response = rawRes ? await JSON.parse(rawRes) : undefined;
-            if (response && 'items' in response && response.items.length === 1) {
-                let viewCount = Number(response.items[0].statistics.viewCount) ?? undefined;
-                let subCount = Number(response.items[0].statistics.subscriberCount) ?? undefined;
+            if (
+                response &&
+                'items' in response &&
+                response.items.length === 1
+            ) {
+                let viewCount =
+                    Number(response.items[0].statistics.viewCount) ?? undefined;
+                let subCount =
+                    Number(response.items[0].statistics.subscriberCount) ??
+                    undefined;
 
                 if (viewCount) {
-                    let suffix = "";
+                    let suffix = '';
                     if (viewCount > 1000000000) {
                         viewCount = viewCount / 1000000000;
-                        suffix = "B";
+                        suffix = 'B';
                     } else if (viewCount > 1000000) {
                         viewCount = viewCount / 1000000;
-                        suffix = "M";
+                        suffix = 'M';
                     } else if (viewCount > 1000) {
                         viewCount = Math.round(viewCount / 1000);
-                        suffix = "k";
+                        suffix = 'k';
                     }
                     viewCount = Math.round(viewCount * 100) / 100;
                     viewCount = viewCount.toString() + suffix;
                 }
 
                 if (subCount) {
-                    let suffix = "";
+                    let suffix = '';
                     if (subCount > 1000000000) {
                         subCount = subCount / 1000000000;
-                        suffix = "B";
+                        suffix = 'B';
                     } else if (subCount > 1000000) {
                         subCount = subCount / 1000000;
-                        suffix = "M";
+                        suffix = 'M';
                     } else if (subCount > 1000) {
                         subCount = subCount / 1000;
 
-                        suffix = "k";
+                        suffix = 'k';
                     }
                     subCount = Math.round(subCount * 100) / 100;
                     subCount = subCount.toString() + suffix;
@@ -105,13 +114,17 @@ async function showMemberInfo(index) {
                 const info = {
                     name: members[index].name,
                     handle: members[index].youtube.channel_handle,
-                    image: '/virtup-web/src/images/virtual-influencers/full/' + members[index].image_full,
+                    image:
+                        '/virtup-web/src/images/virtual-influencers/full/' +
+                        members[index].image_full,
                     views: viewCount ?? undefined,
                     subs: subCount ?? undefined,
-                    link: 'https://www.youtube.com/' + members[index].youtube.channel_handle,
+                    link:
+                        'https://www.youtube.com/' +
+                        members[index].youtube.channel_handle,
                 };
 
-                let memberHTML = "";
+                let memberHTML = '';
 
                 memberHTML += `<div class="row justify-content-center">`;
                 memberHTML += `<div class="col-lg-8">`;
@@ -126,20 +139,19 @@ async function showMemberInfo(index) {
                 memberHTML += `<h5 class="h3 text-nowrap">${info.name}</h5>`;
                 memberHTML += `<p class="text-secondary text-nowrap mb-1">${info.handle}</p>`;
                 if (info.subs) {
-                    memberHTML += `<p class="mb-0 text-nowrap"><i class="bi bi-people-fill me-2 text-danger"></i>${info.subs}</p>`;
+                    memberHTML += `<p class="mb-0 text-nowrap"><i class="bi bi-people-fill me-2 text-danger"></i>${info.subs}&nbsp;<small>Subscribers</small></p>`;
                 }
                 if (info.views) {
-                    memberHTML += `<p class="text-nowrap"><i class="bi bi-eye-fill me-2 text-danger"></i>${info.views}</p>`;
+                    memberHTML += `<p class="text-nowrap"><i class="bi bi-eye-fill me-2 text-danger"></i>${info.views}&nbsp;<small>Views</small></p>`;
                 }
-                memberHTML += `<div><a role="button" class="btn btn-outline-danger rounded fs-4 w-100" href="${info.link}"><i class="bi bi-youtube"></i></a></div>`;
+                memberHTML += `<div><a role="button" class="btn btn-outline-danger rounded fs-4 w-100" href="${info.link}" target="_blank"><i class="bi bi-youtube"></i></a></div>`;
                 memberHTML += `</div>`;
                 memberHTML += `</div>`;
                 memberHTML += `</div>`;
                 memberHTML += `</div>`;
                 memberHTML += `</div>`;
                 fullMemberInfoBody.innerHTML = memberHTML;
-            }
-            else {
+            } else {
                 fullMemberInfoBody.innerHTML = `<div class="bg-white px-5 py-3 rounded text-nowrap text-center fw-bold"><i class="bi bi-exclamation-triangle-fill me-2 text-danger fs-5"></i>Failed to get YouTube data</div>`;
             }
         }
@@ -147,54 +159,75 @@ async function showMemberInfo(index) {
 }
 
 function scrollToNextSection(id) {
-    if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
+    if (
+        window.innerHeight + Math.round(window.scrollY) >=
+        document.body.offsetHeight
+    ) {
         goToTop();
-        document.getElementById('nextSectionIs').innerHTML = `<i class="bi bi-chevron-down"></i>`;
+        document.getElementById(
+            'nextSectionIs'
+        ).innerHTML = `<i class="bi bi-chevron-down"></i>`;
     } else {
         const sections = [
             'top-section',
             'virtual-influencers-section',
             'about-section',
-            'contact-section'
+            'contact-section',
         ];
-        const targetedIndex = sections.findIndex((section) => id === section) + 1;
+        const targetedIndex =
+            sections.findIndex((section) => id === section) + 1;
         if (targetedIndex < sections.length && targetedIndex >= 0) {
             const element = document.getElementById(sections[targetedIndex]);
-            element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+                inline: 'nearest',
+            });
         }
     }
 }
 
 function checkScrollPosition() {
-    if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
-        document.getElementById('nextSectionIs').innerHTML = `<i class="bi bi-chevron-up"></i>`;
+    if (
+        window.innerHeight + Math.round(window.scrollY) >=
+        document.body.offsetHeight
+    ) {
+        document.getElementById(
+            'nextSectionIs'
+        ).innerHTML = `<i class="bi bi-chevron-up"></i>`;
     } else {
-        document.getElementById('nextSectionIs').innerHTML = `<i class="bi bi-chevron-down"></i>`;
+        document.getElementById(
+            'nextSectionIs'
+        ).innerHTML = `<i class="bi bi-chevron-down"></i>`;
     }
 }
 
 async function loadMembers() {
-    const members = await getData("/virtup-web/src/json/members.json");
-    const membersShow = document.getElementById("virtual-influencers") ?? undefined;
-    const membersDiv = document.getElementById("virtual-influencers-info") ?? undefined;
+    const members = await getData('/virtup-web/src/json/members.json');
+    const membersShow =
+        document.getElementById('virtual-influencers') ?? undefined;
+    const membersDiv =
+        document.getElementById('virtual-influencers-info') ?? undefined;
     if (members && membersShow && membersDiv) {
         membersShow.style.display = 'block';
-        let memberHTML = "";
+        let memberHTML = '';
         let group = undefined;
         let groups = [];
         let group_codes = [];
         let indexGroup = 0;
         let indexMember = 0;
         if (Array.isArray(members)) {
-            memberHTML += '<div class="d-flex flex-row justify-content-center">';
-            memberHTML += '<h1 class="display-6 pb-3 mb-3 header text-center" id="virtual-influencers-title">Our Virtual Influencers</h1>';
+            memberHTML +=
+                '<div class="d-flex flex-row justify-content-center">';
+            memberHTML +=
+                '<h1 class="display-6 pb-3 mb-3 header text-center" id="virtual-influencers-title">Our Virtual Influencers</h1>';
             memberHTML += '</div>';
             let member = undefined;
             for (member of members) {
                 if (!group_codes.includes(member.group_code)) {
                     groups.push({
                         group_code: member.group_code,
-                        group_name: member.group_name
+                        group_name: member.group_name,
                     });
                     group_codes.push(member.group_code);
                 }
@@ -203,12 +236,12 @@ async function loadMembers() {
                 memberHTML += `<div class="mt-4">`;
                 memberHTML += `<h3 class="h3 text-center mb-0">${group.group_name}</h3>`;
                 memberHTML += `<div class="row justify-content-center pt-4">`;
-                    for (member of members) {
-                        if (member.group_code === group.group_code) {
-                            memberHTML += `<div class="col-lg-2 col-md-4 col-sm-6 px-2 d-flex flex-column justify-content-start"><img src="/virtup-web/src/images/virtual-influencers/profile/${member.image_profile}" class="d-block rounded-pill member-photo" role="button" style="border: solid 2px ${member.color}" alt="${member.name}" onclick="showMemberInfo(${indexMember});" id="member-btn-${indexMember}"} loading="lazy" /><div class="d-block text-center mt-4"><h4 class="h5">${member.name}</h4><p class="text-secondary">${member.youtube.channel_handle}</p></div></div>`;
-                            indexMember++;
-                        }
+                for (member of members) {
+                    if (member.group_code === group.group_code) {
+                        memberHTML += `<div class="col-lg-2 col-md-4 col-sm-6 px-2 d-flex flex-column justify-content-start"><img src="/virtup-web/src/images/virtual-influencers/profile/${member.image_profile}" class="d-block rounded-pill member-photo" role="button" style="border: solid 2px ${member.color}" alt="${member.name}" onclick="showMemberInfo(${indexMember});" id="member-btn-${indexMember}"} loading="lazy" /><div class="d-block text-center mt-4"><h4 class="h5">${member.name}</h4><p class="text-secondary">${member.youtube.channel_handle}</p></div></div>`;
+                        indexMember++;
                     }
+                }
                 memberHTML += '</div>';
                 memberHTML += '</div>';
                 indexGroup++;
