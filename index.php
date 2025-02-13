@@ -173,12 +173,18 @@ if (isset($response->is_success) && $response->is_success === true) {
 
     <title><?php echo $meta_name; ?></title>
     <link rel="shortcut icon" href="/virtup-web/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="512x512"  href="/android-icon-512x512.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" type="text/css" href="src/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="src/css/icons/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" type="text/css" href="src/css/extended.css" />
 </head>
 
-<body>
+<body class="position-relative">
     <section id="top-section">
     <div class="position-fixed vw-100" style="z-index:5;">
         <div class="px-md-5 px-4 d-flex flex-row justify-content-between navbar-custom" style="min-height: 5rem;">
@@ -221,7 +227,7 @@ if (isset($response->is_success) && $response->is_success === true) {
                 </div>
             </div>
         </div>
-        <div class="px-md-5 px-4 py-2 d-md-none hideMenu" id="mobileNav">
+        <div class="px-md-5 px-4 py-2 d-lg-none hideMenu" id="mobileNav">
             <div class="d-flex flex-row justify-content-end">
                 <div class="navbar-custom rounded-3">
                     <a href="javascript:void(0)" role="button" class="text-white text-decoration-none" role="button"
@@ -241,10 +247,19 @@ if (isset($response->is_success) && $response->is_success === true) {
             </div>
         </div>
     </div>
-
     
-    <div id="goToNextSection" onclick="scrollToNextSection(scrollSection)" class="go-to-next-section-btn btn btn-sm btn-light shadow border p-3 text-nowrap fw-bold">
+    <div id="goToNextSection" onclick="scrollToNextSection(scrollSection)" class="go-to-next-section-btn btn btn-sm btn-light shadow rounded-circle p-3 text-nowrap fw-bold" style="display: none;">
         <span id="nextSectionIs" class="fs-3"><i class="bi bi-chevron-down"></i></span>
+    </div>
+
+    <div class="w-100 vh-100 position-absolute d-flex flex-column justify-content-end" id="banner-hover">
+        <a href="#socials" role="button" class="scroll-down-btn">
+            <div class="position-relative w-100 h-100" style="pointer-events: none;">
+                <div class="move-up-down mb-5">
+                    <i class="bi bi-chevron-down display-4"></i>
+                </div>
+            </div>
+        </a>
     </div>
 
     <div id="banner" class="text-center banner fade-in-onload">
@@ -252,38 +267,37 @@ if (isset($response->is_success) && $response->is_success === true) {
             <source src="<?php echo $about_video ?>" type="video/mp4">
         </video>
     </div>
-
     
-    <div class="container-fluid<?php echo $hasContact == true ? "" : " d-none"?>">
-    <div class="row" id="social-row">
-        <a href="<?php echo $contact_social_x ?? "javascript:void(0)" ?>" class="d-block col-4 social-btn social-btn-x" role="button">
-            <div class="d-flex flex-column h-100 justify-content-center">
-                <div class="d-block mx-3 my-5 social-text social-text-x">
-                    <i class="bi bi-twitter-x fs-1"></i>
-                    <div class="text-nowrap mt-2 lead d-sm-block d-none">Twitter / X</div>
+    <div class="container-fluid<?php echo $hasContact == true ? "" : " d-none"?>" id="socials" style="scroll-margin-top: 5em;">
+        <div class="row" id="social-row">
+            <a href="<?php echo $contact_social_x ?? "javascript:void(0)" ?>" class="d-block col-4 social-btn social-btn-x" role="button">
+                <div class="d-flex flex-column h-100 justify-content-center">
+                    <div class="d-block mx-3 my-5 social-text social-text-x">
+                        <i class="bi bi-twitter-x fs-1"></i>
+                        <div class="text-nowrap mt-2 lead d-sm-block d-none">Twitter / X</div>
+                    </div>
                 </div>
-            </div>
-            <div class="overlay-social-btn overlay-social-btn-x"></div>
-        </a>
-        <a href="<?php echo $contact_social_youtube ?? "javascript:void(0)" ?>" class="d-block col-4 social-btn" role="button">
-            <div class="d-flex flex-column h-100 justify-content-center">
-                <div class="d-block mx-3 my-5 social-text">
-                    <i class="bi bi-youtube fs-1"></i>
-                    <div class="text-nowrap mt-2 lead d-sm-block d-none">YouTube</div>
+                <div class="overlay-social-btn overlay-social-btn-x"></div>
+            </a>
+            <a href="<?php echo $contact_social_youtube ?? "javascript:void(0)" ?>" class="d-block col-4 social-btn" role="button">
+                <div class="d-flex flex-column h-100 justify-content-center">
+                    <div class="d-block mx-3 my-5 social-text">
+                        <i class="bi bi-youtube fs-1"></i>
+                        <div class="text-nowrap mt-2 lead d-sm-block d-none">YouTube</div>
+                    </div>
                 </div>
-            </div>
-            <div class="overlay-social-btn overlay-social-btn-youtube"></div>
-        </a>
-        <a href="<?php echo $contact_social_facebook ?? "javascript:void(0)" ?>" class="d-block col-4 social-btn" role="button">
-            <div class="d-flex flex-column h-100 justify-content-center">
-                <div class="d-block mx-3 my-5 social-text">
-                    <i class="bi bi-facebook fs-1"></i>
-                    <div class="text-nowrap mt-2 lead d-sm-block d-none">Facebook</div>
+                <div class="overlay-social-btn overlay-social-btn-youtube"></div>
+            </a>
+            <a href="<?php echo $contact_social_facebook ?? "javascript:void(0)" ?>" class="d-block col-4 social-btn" role="button">
+                <div class="d-flex flex-column h-100 justify-content-center">
+                    <div class="d-block mx-3 my-5 social-text">
+                        <i class="bi bi-facebook fs-1"></i>
+                        <div class="text-nowrap mt-2 lead d-sm-block d-none">Facebook</div>
+                    </div>
                 </div>
-            </div>
-            <div class="overlay-social-btn overlay-social-btn-facebook"></div>
-        </a>
-    </div>
+                <div class="overlay-social-btn overlay-social-btn-facebook"></div>
+            </a>
+        </div>
     </div>
     </section>
 

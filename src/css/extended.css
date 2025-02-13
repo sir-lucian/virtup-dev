@@ -4,7 +4,7 @@
 }
 
 :root {
-    --accented-color: #09E4A2;
+    --accented-color: #09e4a2;
     --dark: rgba(11, 11, 11, 1);
     --light: rgba(230, 230, 230, 1);
 }
@@ -21,11 +21,11 @@ div.banner {
     background-color: var(--dark);
     background-size: cover;
     background-position: center;
-    z-index: -1;
+    z-index: -2;
 }
 
-div#banner{
-    background-image: linear-gradient(to bottom, rgba(230, 230, 230, 0) 50%, var(--light)), url("https://dev.lucian.solutions/virtup-web/src/images/cover.jpg");
+#banner {
+    background-color: var(--dark);
 }
 
 #cover-video {
@@ -34,6 +34,7 @@ div#banner{
     object-fit: cover;
     width: 100%;
     height: 100%;
+    z-index: -1;
 }
 
 .scroll-down-text {
@@ -41,8 +42,19 @@ div#banner{
     transition: color 0.25s ease-in-out;
 }
 
-div.banner:hover .scroll-down-text{
-    color: var(--dark);
+#banner-hover {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(11, 11, 11, 0) 70%,
+        var(--dark)
+    );
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.25s ease-in-out;
+}
+
+#banner-hover:hover {
+    opacity: 1;
 }
 
 div.navbar-custom {
@@ -75,13 +87,38 @@ div.hideMenu {
 }
 
 @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
-  
+
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.move-up-down {
+    animation: MoveUpDown 0.66s ease-in-out infinite;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+}
+
+@keyframes MoveUpDown {
+    0%,
+    100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    50% {
+        transform: translateY(-15px) translateX(-50%);
+    }
 }
 
 .content-scroll {
@@ -107,8 +144,8 @@ div.hideMenu {
 
 .go-to-next-section-btn {
     position: fixed;
-    bottom: 1.5rem;
     right: 1.5rem;
+    bottom: 1.5rem;
     z-index: 3;
 }
 
@@ -195,6 +232,14 @@ div.hideMenu {
     opacity: 1;
     transform: none;
     visibility: visible;
+}
+
+.scroll-down-btn {
+    width: 100%;
+    height: 30vh;
+    pointer-events: auto;
+    color: white;
+    text-align: center;
 }
 
 .social-btn {
