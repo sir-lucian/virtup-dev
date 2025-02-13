@@ -4,3 +4,4 @@
 *.webmanifest
 /src/images/virtual-influencers/
 /src/images/*.mp4
+.prettierrc

@@ -5,7 +5,7 @@
         {
             "name": "Draki Kona",
             "group_name": "Lumina First Myth",
-            "group_code": "lumina_first_myth",
+            "groups": "lumina_first_myth",
             "image_profile": "pf_Kona.jpg",
             "image_full": "kona.png",
             "color": "rgba(0, 0 ,0 ,0)",
