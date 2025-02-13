@@ -106,8 +106,8 @@ async function showMemberInfo(index) {
                     name: members[index].name,
                     handle: members[index].youtube.channel_handle,
                     image: '/virtup-web/src/images/virtual-influencers/full/' + members[index].image_full,
-                    views: viewCount,
-                    subs: subCount,
+                    views: viewCount ?? undefined,
+                    subs: subCount ?? undefined,
                     link: 'https://www.youtube.com/' + members[index].youtube.channel_handle,
                 };
 
@@ -125,8 +125,12 @@ async function showMemberInfo(index) {
                 memberHTML += `<div class="d-block px-5 pb-4 bg-white rounded-bottom">`;
                 memberHTML += `<h5 class="h3 text-nowrap">${info.name}</h5>`;
                 memberHTML += `<p class="text-secondary text-nowrap mb-1">${info.handle}</p>`;
-                memberHTML += `<p class="mb-0 text-nowrap"><i class="bi bi-people-fill me-2 text-danger"></i>${info.subs}</p>`;
-                memberHTML += `<p class="text-nowrap"><i class="bi bi-eye-fill me-2 text-danger"></i>${info.views}</p>`;
+                if (info.subs) {
+                    memberHTML += `<p class="mb-0 text-nowrap"><i class="bi bi-people-fill me-2 text-danger"></i>${info.subs}</p>`;
+                }
+                if (info.views) {
+                    memberHTML += `<p class="text-nowrap"><i class="bi bi-eye-fill me-2 text-danger"></i>${info.views}</p>`;
+                }
                 memberHTML += `<div><a role="button" class="btn btn-outline-danger rounded fs-4 w-100" href="${info.link}"><i class="bi bi-youtube"></i></a></div>`;
                 memberHTML += `</div>`;
                 memberHTML += `</div>`;

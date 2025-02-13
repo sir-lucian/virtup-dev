@@ -352,7 +352,7 @@ if (isset($response->is_success) && $response->is_success === true) {
                         <div class="d-flex flex-column justify-content-center">
                             <p class="text-lg-end text-start mb-0 text-nowrap"><span class="lead"><i
                                         class="bi bi-envelope accented me-2"></i><span
-                                        id="contact-email"><?php echo $contact_email ?></span></span></p>
+                                        id="contact-email"></span></span></p>
                             <p class="text-lg-end text-start text-nowrap"><span class="lead"><i
                                         class="bi bi-telephone accented me-2"></i><span
                                         id="contact-phone"><?php echo $contact_phone ?></span></span>&nbsp;<?php echo $contact_phone_name !== "" ? "(" : "" ?><span
@@ -395,6 +395,7 @@ if (isset($response->is_success) && $response->is_success === true) {
 <script type="text/javascript" src="src/js/mobile_menu.js"></script>
 <script>
     let scrollSection;
+    const contact_email = "<?php echo $contact_email ?>";
 
     $("#banner").ready(function () {
         $('.fade-in-onload').each(function () {
@@ -404,6 +405,10 @@ if (isset($response->is_success) && $response->is_success === true) {
 
     $(window).ready(async function () {
         await loadMembers();
+        const emailComp = document.getElementById("contact-email");
+        if (emailComp) {
+            emailComp.innerHTML = contact_email;
+        }
     });
 
     $(window).ready(function () {
