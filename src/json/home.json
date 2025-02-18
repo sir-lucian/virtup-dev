@@ -40,6 +40,43 @@
                     "youtube": "https://youtube.com"
                 }
             }
+        },
+        {
+            "section": "socials",
+            "details": {
+                "social": {
+                    "facebook": [
+                        {
+                            "name": "Facebook 1",
+                            "url": "https://facebook.com"
+                        },
+                        {
+                            "name": "Facebook 2",
+                            "url": "https://facebook.com"
+                        }
+                    ],
+                    "x": [
+                        {
+                            "name": "Twitter 1",
+                            "url": "https://x.com"
+                        },
+                        {
+                            "name": "Twitter 2",
+                            "url": "https://x.com"
+                        }
+                    ],
+                    "youtube": [
+                        {
+                            "name": "YouTube 1",
+                            "url": "https://youtube.com"
+                        },
+                        {
+                            "name": "YouTube 2",
+                            "url": "https://youtube.com"
+                        }
+                    ]
+                }
+            }
         }
     ]
 }
