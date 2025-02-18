@@ -2,7 +2,7 @@
 
 define(
     'KEY',
-    'TOKEN VALUE HERE'
+    ''
 );
 function getErrorResponse($code = 400)
 {
@@ -35,10 +35,6 @@ function getSuccessResponse($data)
         "response_code" => 200,
         "data" => $data
     ]);
-}
-
-function getYouTubeInfo($handle) {
-    
 }
 
 if ($_GET['handle']) {
