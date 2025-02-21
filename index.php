@@ -53,9 +53,9 @@ $social_facebook = [];
 $social_x = [];
 $social_youtube = [];
 
-$all_social_facebook = ['<a href="', '" role="button" class="btn btn-outline-primary rounded-0 border-0 w-100"><div class="fw-bold my-2">', '</div></a>'];
-$all_social_x = ['<a href="', '" role="button" class="btn btn-outline-dark rounded-0 border-0 w-100"><div class="fw-bold my-2">', '</div></a>'];
-$all_social_youtube = ['<a href="', '" role="button" class="btn btn-outline-danger rounded-0 border-0 w-100"><div class="fw-bold my-2">', '</div></a>'];
+$all_social_facebook = ['<a href="', '" role="button" class="btn btn-outline-primary rounded-0 border-0 w-100" target="_blank"><div class="fw-bold my-2">', '</div></a>'];
+$all_social_x = ['<a href="', '" role="button" class="btn btn-outline-dark rounded-0 border-0 w-100" target="_blank"><div class="fw-bold my-2">', '</div></a>'];
+$all_social_youtube = ['<a href="', '" role="button" class="btn btn-outline-danger rounded-0 border-0 w-100" target="_blank"><div class="fw-bold my-2">', '</div></a>'];
 
 if (isset($response->is_success) && $response->is_success === true) {
     $data = $response->data;
@@ -275,24 +275,23 @@ if (isset($response->is_success) && $response->is_success === true) {
             </div>
         </div>
 
-        <div class="w-100 vh-100 position-absolute d-flex flex-column justify-content-end" id="banner-hover">
-            <a href="#socials" role="button" class="scroll-down-btn">
-                <div class="position-relative w-100 h-100" style="pointer-events: none;">
-                    <div class="move-up-down mb-5">
-                        <i class="bi bi-chevron-down display-4"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div id="banner" class="text-center banner">
+        <div id="banner" class="text-center banner position-relative">
             <video class="<?php echo $hasContact == true && $about_video ? "lazy" : "d-none" ?>" autoplay playsinline muted
                 loop id="cover-video" disablePictureInPicture controlsList="nodownload">
                 <source src="<?php echo $about_video ?>" type="video/mp4">
             </video>
+            <div class="w-100 h-100 position-absolute d-flex flex-column justify-content-end top-0 left-0" id="banner-hover">
+                <a href="#socials" role="button" class="scroll-down-btn">
+                    <div class="position-relative w-100 h-100">
+                        <div class="move-up-down mb-5">
+                            <i class="bi bi-chevron-down display-4"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
 
-        <div class="container-fluid<?php echo $hasContact == true ? "" : " d-none" ?>" id="socials"
+        <div class="container-fluid<?php echo $hasSocials == true ? "" : " d-none" ?>" id="socials"
             style="scroll-margin-top: 5em;">
             <div class="row" id="social-row">
                 <div class="d-block col-4 social-btn social-btn-x" id="social-row-x">
@@ -358,9 +357,9 @@ if (isset($response->is_success) && $response->is_success === true) {
 
     <div class="min-vh-100 d-flex flex-column justify-content-center pt-3" id="content" name="content">
         <section id="virtual-influencers-section">
-            <div class="container-fluid content-scroll fade-in" id="virtual-influencers"
+            <div class="content-scroll fade-in" id="virtual-influencers"
                 style="display: none; scroll-margin-top: 7em;">
-                <div class="container-lg my-lg-3 my-2 text-black bg-white shadow-sm p-5 rounded-3"
+                <div class="container-md my-lg-3 my-2 text-black bg-white shadow p-5"
                     id="virtual-influencers-info">
                     <div class="text-center py-5">
                         <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
@@ -372,9 +371,9 @@ if (isset($response->is_success) && $response->is_success === true) {
         </section>
 
         <section id="about-section">
-            <div class="<?php echo $hasAbout == true ? "container-fluid content-scroll fade-in" : "d-none"; ?>"
+            <div class="<?php echo $hasAbout == true ? "content-scroll fade-in" : "d-none"; ?>"
                 id="about" style="scroll-margin-top: 7em;">
-                <div class="container-lg my-lg-3 my-2 text-black bg-white shadow-sm p-5 rounded-3">
+                <div class="container-md my-lg-3 my-2 text-black bg-white shadow p-5">
                     <div class="row">
                         <div class="col-lg-4 my-auto">
                             <div class="d-flex flex-column justify-content-center">
@@ -396,9 +395,9 @@ if (isset($response->is_success) && $response->is_success === true) {
         </section>
 
         <section id="contact-section">
-            <div class="<?php echo $hasContact == true ? "container-fluid content-scroll fade-in" : "d-none"; ?>"
+            <div class="<?php echo $hasContact == true ? "content-scroll fade-in" : "d-none"; ?>"
                 id="contact" style="scroll-margin-top: 7em;">
-                <div class="container-lg my-lg-3 my-2 text-black bg-white shadow-sm p-5 rounded-3">
+                <div class="container-md my-lg-3 my-2 text-black bg-white shadow p-5">
                     <div class="row">
                         <div class="col-lg-8 my-auto">
                             <div class="d-flex flex-column justify-content-center">

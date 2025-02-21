@@ -21,7 +21,7 @@
                 },
                 "video": "https://dev.lucian.solutions/virtup-web/src/images/videocover.mp4",
                 "title": "About VirtUp",
-                "subtitle": "OUR COMPANY",
+                "subtitle": null,
                 "description": "VirtUp Entertainment Co., Ltd. was established in 2024 with the mission of fostering creativity and bringing imagination to life for everyone. By blending exceptional talents across various fields with the charm and fun of diverse virtual characters, the company delivers captivating works, including Virtual YouTubers, music videos, and much more."
             }
         },
@@ -47,32 +47,32 @@
                 "social": {
                     "facebook": [
                         {
-                            "name": "Facebook 1",
-                            "url": "https://facebook.com"
+                            "name": "Lumina",
+                            "url": "https://www.facebook.com/LuminaVProject"
                         },
                         {
-                            "name": "Facebook 2",
-                            "url": "https://facebook.com"
+                            "name": "RiseON",
+                            "url": "https://www.facebook.com/Riseonproject"
                         }
                     ],
                     "x": [
                         {
-                            "name": "Twitter 1",
-                            "url": "https://x.com"
+                            "name": "Lumina",
+                            "url": "https://x.com/LuminaVProject"
                         },
                         {
-                            "name": "Twitter 2",
-                            "url": "https://x.com"
+                            "name": "RiseON",
+                            "url": "https://x.com/riseonproject"
                         }
                     ],
                     "youtube": [
                         {
-                            "name": "YouTube 1",
-                            "url": "https://youtube.com"
+                            "name": "Lumina",
+                            "url": "https://www.youtube.com/@LuminaVProject"
                         },
                         {
-                            "name": "YouTube 2",
-                            "url": "https://youtube.com"
+                            "name": "RiseON",
+                            "url": "https://www.youtube.com/@riseon_project"
                         }
                     ]
                 }
