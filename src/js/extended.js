@@ -234,7 +234,7 @@ async function loadMembers() {
                 memberHTML += `<div class="row justify-content-center pt-4">`;
                 for (member of members) {
                     if (member.group_code === group.group_code) {
-                        memberHTML += `<div class="col-lg-2 col-md-4 col-sm-6 px-2 my-3 d-flex flex-column justify-content-start gap-2"><img src="/virtup-web/src/images/virtual-influencers/profile/${member.image_profile}" class="d-block member-photo" role="button" style="border: solid 2px ${member.color}" alt="${member.name}" onclick="showMemberInfo(${indexMember});" id="member-btn-${indexMember}"} /><div class="d-block text-center"><div class="fw-bold fs-5">${member.name}</div><div class="text-secondary" style="font-size: 1rem;">${member.youtube.channel_handle}</div></div></div>`;
+                        memberHTML += `<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 px-2 my-3 d-flex flex-column justify-content-start gap-2"><img src="/virtup-web/src/images/virtual-influencers/profile/${member.image_profile}" class="d-block member-photo" role="button" style="border: solid 2px ${member.color}" alt="${member.name}" onclick="showMemberInfo(${indexMember});" id="member-btn-${indexMember}"} /><div class="d-block text-center"><div class="fw-bold fs-5">${member.name}</div><div class="text-secondary" style="font-size: 1rem;">${member.youtube.channel_handle}</div></div></div>`;
                         indexMember++;
                     }
                 }

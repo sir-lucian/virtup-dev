@@ -8,7 +8,6 @@
             "group_code": "lumina_first_myth",
             "image_profile": "pf_Kona.jpg",
             "image_full": "kona.png",
-            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
                 "channel_handle": "@DrakiKona"
             }
@@ -19,7 +18,6 @@
             "group_code": "lumina_first_myth",
             "image_profile": "pf_Reirin.jpg",
             "image_full": "reirin.png",
-            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
                 "channel_handle": "@KamiyuReirin"
             }
@@ -30,7 +28,6 @@
             "group_code": "lumina_first_myth",
             "image_profile": "pf_Mikael.jpg",
             "image_full": "mika.png",
-            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
                 "channel_handle": "@CerafineMikael"
             }
@@ -41,7 +38,6 @@
             "group_code": "lumina_first_myth",
             "image_profile": "pf_Lilibelle.jpg",
             "image_full": "lilibelle.png",
-            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
                 "channel_handle": "@ArdalitaLilibelle"
             }
@@ -52,7 +48,6 @@
             "group_code": "lumina_first_myth",
             "image_profile": "pf_Sireen.jpg",
             "image_full": "sireen.png",
-            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
                 "channel_handle": "@AtlanteiaSireen"
             }
@@ -63,7 +58,6 @@
             "group_code": "lumina_world_end",
             "image_profile": "pf_AMI.jpg",
             "image_full": "AMI.png",
-            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
                 "channel_handle": "@AMIWorldEnd"
             }
@@ -74,7 +68,6 @@
             "group_code": "lumina_world_end",
             "image_profile": "pf_Xonebu.jpg",
             "image_full": "xonebu.png",
-            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
                 "channel_handle": "@XonebuWorldEnd"
             }
@@ -85,7 +78,6 @@
             "group_code": "lumina_world_end",
             "image_profile": "pf_Tsururu.jpg",
             "image_full": "tsururu.png",
-            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
                 "channel_handle": "@TsururuWorldEnd"
             }
@@ -96,7 +88,6 @@
             "group_code": "lumina_world_end",
             "image_profile": "pf_Ashyra.jpg",
             "image_full": "ashyra.png",
-            "color": "rgba(0, 0 ,0 ,0)",
             "youtube": {
                 "channel_handle": "@AshyraWorldEnd"
             }
