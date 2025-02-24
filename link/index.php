@@ -2,7 +2,7 @@
 
 define("LINKS", [
 //  "example-link-id" => "https://www.examplelink.com/here?go=value&to=value2",
-    "2025-riseon-audition" => "https://forms.gle/Db37TKnUPDTpQLUZ8"
+    "2025-riseon-audition" => "https://forms.gle/Db37TKnUPDTpQLUZ8",
 ]);
 define("HOMEPAGE", "https://virtup.me");
 
