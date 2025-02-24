@@ -276,11 +276,12 @@ if (isset($response->is_success) && $response->is_success === true) {
         </div>
 
         <div id="banner" class="text-center banner position-relative">
-            <video class="<?php echo $hasContact == true && $about_video ? "lazy" : "d-none" ?>" autoplay playsinline muted
-                loop id="cover-video" disablePictureInPicture controlsList="nodownload">
+            <video class="<?php echo $hasContact == true && $about_video ? "lazy" : "d-none" ?>" autoplay playsinline
+                muted loop id="cover-video" disablePictureInPicture controlsList="nodownload">
                 <source src="<?php echo $about_video ?>" type="video/mp4">
             </video>
-            <div class="w-100 h-100 position-absolute d-flex flex-column justify-content-end top-0 left-0" id="banner-hover">
+            <div class="w-100 h-100 position-absolute d-flex flex-column justify-content-end top-0 left-0"
+                id="banner-hover">
                 <a href="#socials" role="button" class="scroll-down-btn">
                     <div class="position-relative w-100 h-100">
                         <div class="move-up-down mb-5">
@@ -357,10 +358,8 @@ if (isset($response->is_success) && $response->is_success === true) {
 
     <div class="min-vh-100 d-flex flex-column justify-content-center pt-3" id="content" name="content">
         <section id="virtual-influencers-section">
-            <div class="content-scroll fade-in" id="virtual-influencers"
-                style="display: none; scroll-margin-top: 7em;">
-                <div class="container-md my-lg-3 my-2 text-black bg-white shadow p-5"
-                    id="virtual-influencers-info">
+            <div class="content-scroll fade-in" id="virtual-influencers" style="display: none; scroll-margin-top: 7em;">
+                <div class="container-md my-lg-3 my-2 text-black bg-white shadow p-5" id="virtual-influencers-info">
                     <div class="text-center py-5">
                         <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
                             <span class="visually-hidden">Loading...</span>
@@ -371,8 +370,8 @@ if (isset($response->is_success) && $response->is_success === true) {
         </section>
 
         <section id="about-section">
-            <div class="<?php echo $hasAbout == true ? "content-scroll fade-in" : "d-none"; ?>"
-                id="about" style="scroll-margin-top: 7em;">
+            <div class="<?php echo $hasAbout == true ? "content-scroll fade-in" : "d-none"; ?>" id="about"
+                style="scroll-margin-top: 7em;">
                 <div class="container-md my-lg-3 my-2 text-black bg-white shadow p-5">
                     <div class="row">
                         <div class="col-lg-4 my-auto">
@@ -395,8 +394,8 @@ if (isset($response->is_success) && $response->is_success === true) {
         </section>
 
         <section id="contact-section">
-            <div class="<?php echo $hasContact == true ? "content-scroll fade-in" : "d-none"; ?>"
-                id="contact" style="scroll-margin-top: 7em;">
+            <div class="<?php echo $hasContact == true ? "content-scroll fade-in" : "d-none"; ?>" id="contact"
+                style="scroll-margin-top: 7em;">
                 <div class="container-md my-lg-3 my-2 text-black bg-white shadow p-5">
                     <div class="row">
                         <div class="col-lg-8 my-auto">
@@ -407,8 +406,8 @@ if (isset($response->is_success) && $response->is_success === true) {
                                 <p id="contact-address"><?php echo $contact_address ?></p>
                             </div>
                         </div>
-                        <div class="col-lg-4 my-auto">
-                            <div class="d-flex flex-column justify-content-center">
+                        <div class="col-lg-4 mt-auto">
+                            <div class="d-flex flex-column justify-content-end">
                                 <p class="text-lg-end text-start mb-0 text-nowrap"><span class="lead"><i
                                             class="bi bi-envelope accented me-2"></i><span
                                             id="contact-email"></span></span></p>
@@ -416,20 +415,6 @@ if (isset($response->is_success) && $response->is_success === true) {
                                             class="bi bi-telephone accented me-2"></i><span
                                             id="contact-phone"><?php echo $contact_phone ?></span></span>&nbsp;<?php echo $contact_phone_name !== "" ? "(" : "" ?><span
                                         id="contact-phone-name"><?php echo $contact_phone_name ?></span><?php echo $contact_phone_name !== "" ? ")" : "" ?>
-                                </p>
-                                <p class="text-lg-end text-center mt-2 mb-0">
-                                    <a href="<?php echo $contact_social_facebook ?? "javascript:void(0)" ?>"
-                                        role="button" target="_blank" id="social-facebook"
-                                        class="btn btn-outline-primary p-3 rounded-pill border-0"><i
-                                            class="bi bi-facebook fs-4"></i></a>
-                                    <a href="<?php echo $contact_social_x ?? "javascript:void(0)" ?>" role="button"
-                                        target="_blank" id="social-x"
-                                        class="btn btn-outline-dark p-3 rounded-pill border-0"><i
-                                            class="bi bi-twitter-x fs-4"></i></a>
-                                    <a href="<?php echo $contact_social_youtube ?? "javascript:void(0)" ?>"
-                                        role="button" target="_blank" id="social-youtube"
-                                        class="btn btn-outline-danger p-3 rounded-pill border-0"><i
-                                            class="bi bi-youtube fs-4"></i></a>
                                 </p>
                             </div>
                         </div>
@@ -539,7 +524,7 @@ if (isset($response->is_success) && $response->is_success === true) {
             });
         }
     });
-    
+
 </script>
 
 </html>
