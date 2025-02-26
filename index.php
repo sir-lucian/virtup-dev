@@ -376,9 +376,9 @@ if (isset($response->is_success) && $response->is_success === true) {
                     <div class="row">
                         <div class="col-lg-4 my-auto">
                             <div class="d-flex flex-column justify-content-center">
-                                <h1 class="display-6 text-center"><img src="<?php echo $about_logo ?>"
+                                <h2 class="display-6 text-center"><img src="<?php echo $about_logo ?>"
                                         alt="<?php echo $about_logo_alt ?>" id="about-logo" class="logo-about"
-                                        loading="lazy" /></h1>
+                                        loading="lazy" /></h2>
                             </div>
                         </div>
                         <div class="col-lg-8 my-auto">
@@ -400,8 +400,8 @@ if (isset($response->is_success) && $response->is_success === true) {
                     <div class="row">
                         <div class="col-lg-8 my-auto">
                             <div class="d-flex flex-column justify-content-center">
-                                <h1 class="display-6 pb-3 mb-3 header" id="contact-title"><?php echo $contact_title ?>
-                                </h1>
+                                <h2 class="display-6 pb-3 mb-3 header" id="contact-title"><?php echo $contact_title ?>
+                                </h2>
                                 <p class="lead" id="contact-subtitle"><?php echo $contact_subtitle ?></p>
                                 <p id="contact-address"><?php echo $contact_address ?></p>
                             </div>
