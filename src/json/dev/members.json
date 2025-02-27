@@ -1,0 +1,26 @@
+{
+    "is_success": true,
+    "response_code": 200,
+    "data": [
+        {
+            "name": "Lucian",
+            "group_name": "Lucian Solutions",
+            "group_code": "lucian_solutions",
+            "image_profile": "lucian.jpg",
+            "image_full": "kona.png",
+            "youtube": {
+                "channel_handle": "@SirLucian"
+            }
+        },
+        {
+            "name": "zaru no.21",
+            "group_name": "Zaru no Group",
+            "group_code": "zaro_no_group",
+            "image_profile": "lucian.jpg",
+            "image_full": "kona.png",
+            "youtube": {
+                "channel_handle": "@zaruno.21"
+            }
+        }
+    ]
+}
