@@ -1,7 +1,8 @@
+const REPO = 'DEV'; // DEV or PROD
+
 function goToTop() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-
     const currentURL = window.location.href;
     const urlWithoutHash = currentURL.split('#')[0];
     window.history.replaceState({}, document.title, urlWithoutHash);
@@ -78,11 +79,11 @@ async function showMemberInfo(index) {
     fullMemberInfoBody.innerHTML = '';
     fullMemberInfo.style.opacity = '100%';
     fullMemberInfo.style.pointerEvents = 'auto';
-    const members = await getData('/virtup-web/src/json/members.json');
+    const members = await getData((REPO === 'DEV' ? '/virtup-web' : '') + '/src/json' + (REPO === 'DEV' ? '/dev' : '') + '/members.json');
     if (members && Array.isArray(members)) {
         if (members[index] && members[index].youtube.channel_handle) {
             const rawRes = await getData(
-                '/virtup-web/services/youtubeService.php?handle=' +
+                (REPO ? '/virtup-web' : '') + '/services/youtubeService.php?handle=' +
                     members[index].youtube.channel_handle
             );
             const response = rawRes ? await JSON.parse(rawRes) : undefined;
@@ -134,10 +135,10 @@ async function showMemberInfo(index) {
                     name: members[index].name,
                     handle: members[index].youtube.channel_handle,
                     image_av:
-                        '/virtup-web/src/images/virtual-influencers/profile/' +
+                        (REPO === 'DEV' ? '/virtup-web' : '') + '/src/images/virtual-influencers/profile/' +
                         members[index].image_profile,
                     image:
-                        '/virtup-web/src/images/virtual-influencers/full/' +
+                        (REPO === 'DEV' ? '/virtup-web' : '') + '/src/images/virtual-influencers/full/' +
                         members[index].image_full,
                     views: viewCount ?? undefined,
                     subs: subCount ?? undefined,
@@ -199,7 +200,7 @@ function delay(time) {
 }
 
 async function loadMembers() {
-    const members = await getData('/virtup-web/src/json/members.json');
+    const members = await getData((REPO === "DEV" ? '/virtup-web' : '') + '/src/json' + (REPO === "DEV" ? '/dev' : '') + '/members.json');
     const membersShow =
         document.getElementById('virtual-influencers') ?? undefined;
     const membersDiv =
@@ -234,7 +235,7 @@ async function loadMembers() {
                 memberHTML += `<div class="row justify-content-center pt-4">`;
                 for (member of members) {
                     if (member.group_code === group.group_code) {
-                        memberHTML += `<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 px-2 my-3 d-flex flex-column justify-content-start gap-2"><img src="/virtup-web/src/images/virtual-influencers/profile/${member.image_profile}" class="d-block member-photo" role="button" style="border: solid 2px ${member.color}" alt="${member.name}" onclick="showMemberInfo(${indexMember});" id="member-btn-${indexMember}"} /><div class="d-block text-center"><div class="fw-bold fs-5">${member.name}</div><div class="text-secondary" style="font-size: 1rem;">${member.youtube.channel_handle}</div></div></div>`;
+                        memberHTML += `<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 px-2 my-3 d-flex flex-column justify-content-start gap-2"><img src="${REPO === 'DEV' ? '/virtup-web' : ''}/src/images/virtual-influencers/profile/${member.image_profile}" class="d-block member-photo" role="button" style="border: solid 2px ${member.color}" alt="${member.name}" onclick="showMemberInfo(${indexMember});" id="member-btn-${indexMember}"} /><div class="d-block text-center"><div class="fw-bold fs-5">${member.name}</div><div class="text-secondary" style="font-size: 1rem;">${member.youtube.channel_handle}</div></div></div>`;
                         indexMember++;
                     }
                 }

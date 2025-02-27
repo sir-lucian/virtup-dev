@@ -3,7 +3,15 @@
 error_reporting(E_ERROR | E_PARSE);
 function getWebDetails()
 {
-    define("PATH", dirname(__DIR__) . '/virtup-web/src/json/home.json');
+    define("REPO", "DEV"); // DEV or PROD
+
+    if (REPO === "DEV") {
+        define("PATH", dirname(__DIR__) . '/virtup-web/src/json/dev/home.json');
+    } else if (REPO === "PROD") {
+        define("PATH", dirname(__DIR__) . '/src/json/home.json');
+    } else {
+        define("PATH", dirname(__DIR__) . '/src/json/home.json');
+    }
 
     try {
         $json = file_get_contents(PATH);
@@ -197,7 +205,7 @@ if (isset($response->is_success) && $response->is_success === true) {
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="<?php echo $meta_color; ?>" />
 
     <title><?php echo $meta_name; ?></title>
-    <link rel="shortcut icon" href="/virtup-web/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php REPO === "DEV" ? '/virtup-web/' : '/' ?>favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/android-icon-512x512.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
@@ -216,7 +224,7 @@ if (isset($response->is_success) && $response->is_success === true) {
                 <div class="d-block" role="button" onclick="goToTop()">
                     <div class="d-flex flex-column h-100 justify-content-center">
                         <div class="d-block py-3"><img id="menu-logo" <?php echo $about_logo ? '' : 'style="display: none !important;"' ?> src="<?php echo $about_logo ?? "" ?>"
-                                alt="<?php echo $about_logo_alt ?> Logo" class="logo d-inline-block" /></div>
+                                alt="<?php echo $about_logo_alt ?> Logo" class="logo d-inline-block" loading="lazy" /></div>
                     </div>
                 </div>
                 <div class="d-lg-block d-none">
@@ -276,10 +284,7 @@ if (isset($response->is_success) && $response->is_success === true) {
         </div>
 
         <div id="banner" class="text-center banner position-relative">
-            <video class="<?php echo $hasContact == true && $about_video ? "lazy" : "d-none" ?>" autoplay playsinline
-                muted loop id="cover-video" disablePictureInPicture controlsList="nodownload">
-                <source src="<?php echo $about_video ?>" type="video/mp4">
-            </video>
+            <div style="width: 100%; height: auto; aspect-ratio: 16 / 9; background-color: black;"></div>
             <div class="w-100 h-100 position-absolute d-flex flex-column justify-content-end top-0 left-0"
                 id="banner-hover">
                 <a href="#socials" role="button" class="scroll-down-btn">
@@ -408,14 +413,18 @@ if (isset($response->is_success) && $response->is_success === true) {
                         </div>
                         <div class="col-lg-4 mt-auto">
                             <div class="d-flex flex-column justify-content-end">
-                                <p class="text-lg-end text-start mb-0 text-nowrap"><span class="lead"><i
-                                            class="bi bi-envelope accented me-2"></i><span
-                                            id="contact-email"></span></span></p>
-                                <p class="text-lg-end text-start text-nowrap"><span class="lead"><i
-                                            class="bi bi-telephone accented me-2"></i><span
-                                            id="contact-phone"><?php echo $contact_phone ?></span></span>&nbsp;<?php echo $contact_phone_name !== "" ? "(" : "" ?><span
-                                        id="contact-phone-name"><?php echo $contact_phone_name ?></span><?php echo $contact_phone_name !== "" ? ")" : "" ?>
-                                </p>
+                                <div class="d-flex flex-row justify-content-lg-end justify-content-start">
+                                    <div class="d-block">
+                                        <p class="text-start mb-0 text-nowrap"><span class="lead"><i
+                                                    class="bi bi-envelope accented me-2"></i><span
+                                                    id="contact-email"></span></span></p>
+                                        <p class="text-start text-nowrap"><span class="lead"><i
+                                                    class="bi bi-telephone accented me-2"></i><span
+                                                    id="contact-phone"><?php echo $contact_phone ?></span></span>&nbsp;<?php echo $contact_phone_name !== "" ? "(" : "" ?><span
+                                                id="contact-phone-name"><?php echo $contact_phone_name ?></span><?php echo $contact_phone_name !== "" ? ")" : "" ?>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -470,6 +479,10 @@ if (isset($response->is_success) && $response->is_success === true) {
                 }
             });
         }
+        const bannerComp = document.getElementById("banner");
+        const videoComp = `<video class="<?php echo $hasContact == true && $about_video ? "" : "d-none" ?>" autoplay playsinline muted loop id="cover-video" disablePictureInPicture controlsList="nodownload"><source src="<?php echo $about_video ?>" type="video/mp4"></video>`;
+        const scrollDownComp = `<div class="w-100 h-100 position-absolute d-flex flex-column justify-content-end top-0 left-0" id="banner-hover"><a href="#socials" role="button" class="scroll-down-btn"><div class="position-relative w-100 h-100"><div class="move-up-down mb-5"><i class="bi bi-chevron-down display-4"></i></div></div></a></div>`;
+        bannerComp.innerHTML = videoComp + scrollDownComp;
     });
 
     $(window).ready(function () {
@@ -497,34 +510,6 @@ if (isset($response->is_success) && $response->is_success === true) {
             }
         });
     });
-
-    document.addEventListener("DOMContentLoaded", () => {
-        var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
-
-        if ("IntersectionObserver" in window) {
-            var lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
-                entries.forEach(function (video) {
-                    if (video.isIntersecting) {
-                        for (var source in video.target.children) {
-                            var videoSource = video.target.children[source];
-                            if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
-                                videoSource.src = '<?php echo $about_video ?>';
-                            }
-                        }
-
-                        video.target.load();
-                        video.target.classList.remove("lazy");
-                        lazyVideoObserver.unobserve(video.target);
-                    }
-                });
-            });
-
-            lazyVideos.forEach(function (lazyVideo) {
-                lazyVideoObserver.observe(lazyVideo);
-            });
-        }
-    });
-
 </script>
 
 </html>

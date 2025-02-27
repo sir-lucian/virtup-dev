@@ -17,9 +17,9 @@
             "details": {
                 "logo": {
                     "alt": "VirtUp Logo",
-                    "path": "https://virtup.me/src/images/logo.png"
+                    "path": "https://dev.lucian.solutions/virtup-web/src/images/logo.png"
                 },
-                "video": "https://virtup.me/src/images/videocover.mp4",
+                "video": "https://dev.lucian.solutions/virtup-web/src/images/videocover.mp4",
                 "title": "About VirtUp",
                 "subtitle": null,
                 "description": "VirtUp Entertainment Co., Ltd. was established in 2024 with the mission of fostering creativity and bringing imagination to life for everyone. By blending exceptional talents across various fields with the charm and fun of diverse virtual characters, the company delivers captivating works, including Virtual YouTubers, music videos, and much more."

@@ -1,4 +1,4 @@
-# virtup-web
+# VirtUp
 
 ![VirtUp](https://dev.lucian.solutions/virtup-web/src/images/logo.png "VirtUp")
 
