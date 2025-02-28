@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ERROR | E_PARSE);
+error_reporting(E_ERROR | E_PARSE); // PROD MUST BE ON
 function getWebDetails()
 {
     define("REPO", "DEV"); // DEV or PROD
@@ -8,9 +8,9 @@ function getWebDetails()
     if (REPO === "DEV") {
         define("PATH", dirname(__DIR__) . '/virtup-web/src/json/dev/home.json');
     } else if (REPO === "PROD") {
-        define("PATH", dirname(__DIR__) . '/src/json/home.json');
+        define("PATH", dirname(__DIR__) . '/public_html/src/json/home.json');
     } else {
-        define("PATH", dirname(__DIR__) . '/src/json/home.json');
+        define("PATH", dirname(__DIR__) . '/public_html/src/json/home.json');
     }
 
     try {
@@ -283,8 +283,8 @@ if (isset($response->is_success) && $response->is_success === true) {
             </div>
         </div>
 
-        <div id="banner" class="text-center banner position-relative">
-            <div style="width: 100%; height: auto; aspect-ratio: 16 / 9; background-color: black;"></div>
+        <div id="banner" class="text-center banner position-relative fade-in-onload" style="min-height: 5rem;">
+        <video class="<?php echo $hasContact == true && $about_video ? "" : "d-none" ?>" autoplay playsinline muted loop id="cover-video" disablePictureInPicture controlsList="nodownload"><source src="<?php echo $about_video ?>" type="video/mp4"></video>
             <div class="w-100 h-100 position-absolute d-flex flex-column justify-content-end top-0 left-0"
                 id="banner-hover">
                 <a href="#socials" role="button" class="scroll-down-btn">
@@ -479,10 +479,6 @@ if (isset($response->is_success) && $response->is_success === true) {
                 }
             });
         }
-        const bannerComp = document.getElementById("banner");
-        const videoComp = `<video class="<?php echo $hasContact == true && $about_video ? "" : "d-none" ?>" autoplay playsinline muted loop id="cover-video" disablePictureInPicture controlsList="nodownload"><source src="<?php echo $about_video ?>" type="video/mp4"></video>`;
-        const scrollDownComp = `<div class="w-100 h-100 position-absolute d-flex flex-column justify-content-end top-0 left-0" id="banner-hover"><a href="#socials" role="button" class="scroll-down-btn"><div class="position-relative w-100 h-100"><div class="move-up-down mb-5"><i class="bi bi-chevron-down display-4"></i></div></div></a></div>`;
-        bannerComp.innerHTML = videoComp + scrollDownComp;
     });
 
     $(window).ready(function () {

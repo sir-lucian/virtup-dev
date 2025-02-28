@@ -83,7 +83,7 @@ async function showMemberInfo(index) {
     if (members && Array.isArray(members)) {
         if (members[index] && members[index].youtube.channel_handle) {
             const rawRes = await getData(
-                (REPO ? '/virtup-web' : '') + '/services/youtubeService.php?handle=' +
+                (REPO === "DEV" ? '/virtup-web' : '') + '/services/youtubeService.php?handle=' +
                     members[index].youtube.channel_handle
             );
             const response = rawRes ? await JSON.parse(rawRes) : undefined;
